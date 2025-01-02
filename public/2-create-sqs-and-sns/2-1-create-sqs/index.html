@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create queue :: SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</title>
 
     
-    <link href="/css/nucleus.css?1708425075" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1708425075" rel="stylesheet">
-    <link href="/css/hybrid.css?1708425075" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1708425075" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1708425075" rel="stylesheet">
-    <link href="/css/auto-complete.css?1708425075" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1708425075" rel="stylesheet">
-    <link href="/css/theme.css?1708425075" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1708425075" rel="stylesheet">
+    <link href="/css/nucleus.css?1735810271" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1735810271" rel="stylesheet">
+    <link href="/css/hybrid.css?1735810271" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1735810271" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1735810271" rel="stylesheet">
+    <link href="/css/auto-complete.css?1735810271" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1735810271" rel="stylesheet">
+    <link href="/css/theme.css?1735810271" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1735810271" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1708425075" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1735810271" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1708425075"></script>
+    <script src="/js/jquery-3.3.1.min.js?1735810271"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1708425075"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1708425075"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1735810271"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1735810271"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1708425075"></script>
+<script type="text/javascript" src="/js/search.js?1735810271"></script>
 
     
   </div>
@@ -140,7 +140,7 @@
   
     
     <li data-nav-id="/2-create-sqs-and-sns/2-1-create-sqs/" title="Create queue" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -379,7 +379,7 @@
                   
                     
                     
-                      <option id="en" value="/2-create-sqs-and-sns/2-1-create-sqs/" selected>English</option>
+                      <option id="en" value="//localhost:1313/2-create-sqs-and-sns/2-1-create-sqs/" selected>English</option>
                     
                   
               
@@ -393,7 +393,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/2-create-sqs-and-sns/2-1-create-sqs/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/2-create-sqs-and-sns/2-1-create-sqs/">Tiếng Việt</option>
                     
                   
               
@@ -524,59 +524,59 @@
 	<ol>
 <li>Open <a href="https://ap-southeast-1.console.aws.amazon.com/sqs/v2/home?region=ap-southeast-1#/homepage">Amazon SQS console</a></li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-1.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-1.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Click <strong>Create queue</strong></li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-2.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-2.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>Select <strong>Stardard</strong> for queue type</li>
 </ol>
 <ul>
 <li>Enter queue name: <code>checkout-queue</code></li>
 </ul>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-3.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-3.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Scroll down, click <strong>Create queue</strong></li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-4.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-4.png?featherlight=false&width=90pc"></p>
 <ol start="5">
 <li>Click <strong>Send and receive messages</strong></li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-5.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-5.png?featherlight=false&width=90pc"></p>
 <ol start="6">
 <li>Enter message content, such as: <code>The first order</code></li>
 </ol>
 <ul>
 <li>Click <strong>Send</strong> to send message to queue</li>
 </ul>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-6.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-6.png?featherlight=false&width=90pc"></p>
 <ol start="7">
 <li>Click <strong>Poll message</strong> to receive all message sent to queue</li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-7.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-7.png?featherlight=false&width=90pc"></p>
 <ol start="8">
 <li>Click to the message is showing</li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-8.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-8.png?featherlight=false&width=90pc"></p>
 <ol start="9">
 <li>The message content is displayed</li>
 </ol>
 <ul>
 <li>Ấn <strong>Done</strong></li>
 </ul>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-9.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-9.png?featherlight=false&width=90pc"></p>
 <ol start="10">
 <li>Check to this message</li>
 </ol>
 <ul>
 <li>Click <strong>Delete</strong> to delete message</li>
 </ul>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-10.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-10.png?featherlight=false&width=90pc"></p>
 <ol start="11">
 <li>Click <strong>Delete</strong></li>
 </ol>
-<p><img src="/images/2-create-sqs-and-sns/2-1-create-sqs-11.png?featherlight=false&amp;width=90pc" alt="CreateSQS"></p>
+<p><img alt="CreateSQS" src="/images/2-create-sqs-and-sns/2-1-create-sqs-11.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -790,19 +790,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1708425075"></script>
-    <script src="/js/jquery.sticky.js?1708425075"></script>
-    <script src="/js/featherlight.min.js?1708425075"></script>
-    <script src="/js/highlight.pack.js?1708425075"></script>
+    <script src="/js/clipboard.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1735810271"></script>
+    <script src="/js/jquery.sticky.js?1735810271"></script>
+    <script src="/js/featherlight.min.js?1735810271"></script>
+    <script src="/js/highlight.pack.js?1735810271"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1708425075"></script>
-    <script src="/js/learn.js?1708425075"></script>
-    <script src="/js/hugo-learn.js?1708425075"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1735810271"></script>
+    <script src="/js/learn.js?1735810271"></script>
+    <script src="/js/hugo-learn.js?1735810271"></script>
 
-    <link href="/mermaid/mermaid.css?1708425075" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1708425075"></script>
+    <link href="/mermaid/mermaid.css?1735810271" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1735810271"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

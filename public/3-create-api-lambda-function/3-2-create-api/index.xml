@@ -2,8 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Create APIs on SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</title>
-    <link>/3-create-api-lambda-function/3-2-create-api/</link>
+    <link>//localhost:1313/3-create-api-lambda-function/3-2-create-api/</link>
     <description>Recent content in Create APIs on SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/3-create-api-lambda-function/3-2-create-api/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="//localhost:1313/3-create-api-lambda-function/3-2-create-api/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

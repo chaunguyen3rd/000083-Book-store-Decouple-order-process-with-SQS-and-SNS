@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Tạo Lambda function :: SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</title>
 
     
-    <link href="/css/nucleus.css?1708425075" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1708425075" rel="stylesheet">
-    <link href="/css/hybrid.css?1708425075" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1708425075" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1708425075" rel="stylesheet">
-    <link href="/css/auto-complete.css?1708425075" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1708425075" rel="stylesheet">
-    <link href="/css/theme.css?1708425075" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1708425075" rel="stylesheet">
+    <link href="/css/nucleus.css?1735810271" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1735810271" rel="stylesheet">
+    <link href="/css/hybrid.css?1735810271" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1735810271" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1735810271" rel="stylesheet">
+    <link href="/css/auto-complete.css?1735810271" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1735810271" rel="stylesheet">
+    <link href="/css/theme.css?1735810271" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1735810271" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1708425075" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1735810271" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1708425075"></script>
+    <script src="/js/jquery-3.3.1.min.js?1735810271"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1708425075"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1708425075"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1735810271"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1735810271"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1708425075"></script>
+<script type="text/javascript" src="/js/search.js?1735810271"></script>
 
     
   </div>
@@ -234,7 +234,7 @@
   
     
     <li data-nav-id="/3-create-api-lambda-function/3-1-create-lambda-function/" title="Tạo Lambda function" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -379,7 +379,7 @@
                   
                     
                     
-                      <option id="en" value="/3-create-api-lambda-function/3-1-create-lambda-function/" selected>English</option>
+                      <option id="en" value="//localhost:1313/3-create-api-lambda-function/3-1-create-lambda-function/" selected>English</option>
                     
                   
               
@@ -393,7 +393,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-create-api-lambda-function/3-1-create-lambda-function/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/3-create-api-lambda-function/3-1-create-lambda-function/">Tiếng Việt</option>
                     
                   
               
@@ -535,17 +535,17 @@
       PrimaryKey:
         Name: id
         Type: String
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-1.png?featherlight=false&amp;width=90pc" alt="CreateOrderTable"></p>
+</code></pre><p><img alt="CreateOrderTable" src="/images/3-create-api-lambda-function/3-create-lambda-function-1.png?featherlight=false&width=90pc"></p>
 <ol start="2">
 <li>Chạy các lệnh dưới đây</li>
 </ol>
 <pre tabindex="0"><code>sam build
 sam deploy --guided
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-2.png?featherlight=false&amp;width=90pc" alt="CreateOrderTable"></p>
+</code></pre><p><img alt="CreateOrderTable" src="/images/3-create-api-lambda-function/3-create-lambda-function-2.png?featherlight=false&width=90pc"></p>
 <ul>
 <li>Mở bảng điều khiển của <a href="https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#tables">AWS DynamDB</a> để kiểm tra</li>
 </ul>
-<p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-3.png?featherlight=false&amp;width=90pc" alt="CreateOrderTable"></p>
+<p><img alt="CreateOrderTable" src="/images/3-create-api-lambda-function/3-create-lambda-function-3.png?featherlight=false&width=90pc"></p>
 <ol start="3">
 <li>Thêm đoạn script dưới đây để tạo function <strong>CheckOutOrder</strong></li>
 </ol>
@@ -575,7 +575,7 @@ sam deploy --guided
       Environment:
         Variables:
           QUEUE_NAME: &#34;checkout-queue&#34;
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-4.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+</code></pre><p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-4.png?featherlight=false&width=90pc"></p>
 <ul>
 <li>Thêm đoạn script dưới đây để tạo function <strong>OrderManagement</strong></li>
 </ul>
@@ -605,7 +605,7 @@ sam deploy --guided
       Environment:
         Variables:
           QUEUE_NAME: &#34;checkout-queue&#34;
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-5.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+</code></pre><p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-5.png?featherlight=false&width=90pc"></p>
 <ul>
 <li>Thêm đoạn script dưới đây để tạo function <strong>HandleOrder</strong></li>
 </ul>
@@ -632,7 +632,7 @@ sam deploy --guided
       Environment:
         Variables:
           QUEUE_NAME: &#34;checkout-queue&#34;
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-6.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+</code></pre><p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-6.png?featherlight=false&width=90pc"></p>
 <ul>
 <li>Thêm đoạn script dưới đây để tạo function <strong>DeleteOrder</strong></li>
 </ul>
@@ -658,7 +658,7 @@ sam deploy --guided
       Environment:
         Variables:
           QUEUE_NAME: &#34;checkout-queue&#34;
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-7.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+</code></pre><p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-7.png?featherlight=false&width=90pc"></p>
 <ol start="4">
 <li>Thêm các thư mục và tệp source code cho các function. Cấu trúc thư mục như sau:</li>
 </ol>
@@ -719,7 +719,7 @@ def lambda_handler(event, context):
     }
 </code></pre><ul>
 <li>Tạo thư mục tên <strong>order_management</strong> trong thư mục <strong>fcj-book-store-sam-ws6/fcj-book-store</strong></li>
-<li>Tạo 
+<li>Tạo
 <strong>order_management.py</strong> và sao chép đoạn code sau vào nó.</li>
 </ul>
 <pre tabindex="0"><code>import boto3
@@ -824,7 +824,7 @@ def lambda_handler(event, context):
     }
 </code></pre><ul>
 <li>Tạo thư mục tên <strong>handle_order</strong> trong thư mục <strong>fcj-book-store-sam-ws6/fcj-book-store</strong></li>
-<li>Tạo 
+<li>Tạo
 <strong>handle_order.py</strong> và sao chép đoạn code sau vào nó.</li>
 </ul>
 <pre tabindex="0"><code>import boto3
@@ -911,11 +911,11 @@ def lambda_handler(event, context):
 </ol>
 <pre tabindex="0"><code>sam build
 sam deploy --guided
-</code></pre><p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-8.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+</code></pre><p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-8.png?featherlight=false&width=90pc"></p>
 <ol start="6">
 <li>Mở bảng điều khiển của <a href="https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions">AWS Lambda</a> để kiểm tra các function.</li>
 </ol>
-<p><img src="/images/3-create-api-lambda-function/3-create-lambda-function-9.png?featherlight=false&amp;width=90pc" alt="CreateFunctions"></p>
+<p><img alt="CreateFunctions" src="/images/3-create-api-lambda-function/3-create-lambda-function-9.png?featherlight=false&width=90pc"></p>
 
 
 
@@ -1129,19 +1129,19 @@ sam deploy --guided
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1708425075"></script>
-    <script src="/js/jquery.sticky.js?1708425075"></script>
-    <script src="/js/featherlight.min.js?1708425075"></script>
-    <script src="/js/highlight.pack.js?1708425075"></script>
+    <script src="/js/clipboard.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1735810271"></script>
+    <script src="/js/jquery.sticky.js?1735810271"></script>
+    <script src="/js/featherlight.min.js?1735810271"></script>
+    <script src="/js/highlight.pack.js?1735810271"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1708425075"></script>
-    <script src="/js/learn.js?1708425075"></script>
-    <script src="/js/hugo-learn.js?1708425075"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1735810271"></script>
+    <script src="/js/learn.js?1735810271"></script>
+    <script src="/js/hugo-learn.js?1735810271"></script>
 
-    <link href="/mermaid/mermaid.css?1708425075" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1708425075"></script>
+    <link href="/mermaid/mermaid.css?1735810271" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1735810271"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

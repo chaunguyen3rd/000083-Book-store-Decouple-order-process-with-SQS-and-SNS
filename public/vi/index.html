@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Serverless - Xử lý đơn hàng với SQS-SNS :: SERVERLESS - XỬ LÝ ĐƠN HÀNG VỚI SQS-SNS</title>
 
     
-    <link href="/css/nucleus.css?1708425075" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1708425075" rel="stylesheet">
-    <link href="/css/hybrid.css?1708425075" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1708425075" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1708425075" rel="stylesheet">
-    <link href="/css/auto-complete.css?1708425075" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1708425075" rel="stylesheet">
-    <link href="/css/theme.css?1708425075" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1708425075" rel="stylesheet">
+    <link href="/css/nucleus.css?1735810271" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1735810271" rel="stylesheet">
+    <link href="/css/hybrid.css?1735810271" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1735810271" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1735810271" rel="stylesheet">
+    <link href="/css/auto-complete.css?1735810271" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1735810271" rel="stylesheet">
+    <link href="/css/theme.css?1735810271" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1735810271" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1708425075" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1735810271" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1708425075"></script>
+    <script src="/js/jquery-3.3.1.min.js?1735810271"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1708425075"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1708425075"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1735810271"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1735810271"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/vi";
+        var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1708425075"></script>
+<script type="text/javascript" src="/js/search.js?1735810271"></script>
 
     
   </div>
@@ -379,7 +379,7 @@
                   
                     
                     
-                      <option id="en" value="/">English</option>
+                      <option id="en" value="//localhost:1313/">English</option>
                     
                   
               
@@ -393,7 +393,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/" selected>Tiếng Việt</option>
                     
                   
               
@@ -475,7 +475,7 @@
 <h4 id="tổng-quan">Tổng quan</h4>
 <p>Trong bài số 6 của series này, chúng ta sẽ xử lý các đơn đặt hàng của người dùng sử dụng Amazon SQS và SNS. Khi người dùng đặt hàng, đơn hàng sẽ được đẩy vào hàng đợi và SNS sẽ thông báo cho admin về đơn hàng mới đó. Admin có quyền xem tất cả các đơn đặt hàng và xử lý hoặc xoá chúng.</p>
 <p>Kiến trúc của ứng dụng web sẽ như sau:
-<img src="/images/serverless-diagram.png?featherlight=false&amp;width=50pc" alt="SeverlessExample"></p>
+<img alt="SeverlessExample" src="/images/serverless-diagram.png?featherlight=false&width=50pc"></p>
 <ul>
 <li>Khi người dùng đặt hàng (ấn <strong>Checkout</strong>), API POST /books/order đưa thông tin của đơn hàng vào hàng đợi mà bạn tạo, sau đó pulish một tin nhắn qua Amazon SNS topic</li>
 <li>API GET /books/order được gọi khi admin sử dụng tính năng quản lý đơn hàng để lấy toàn bộ đơn hàng chưa xử lý trong hàng đợi và đã xử lý trong bảng của DynamoDB</li>
@@ -485,17 +485,17 @@
 <h4 id="amazon-simple-queue-service">Amazon Simple Queue Service</h4>
 <p>Amazon Simple Queue Service cung cấp một hàng đợi an toàn, bền vững và có sẵn cho phép bạn tích hợp và tách rời các hệ thống và thành phần phần mềm phân tán. Nó có thể mở rộng quy mô độc lập với ứng dụng của chúng ta. Nó cung cấp một API dịch vụ web chung mà bạn có thể truy cập bằng bất kỳ ngôn ngữ lập trình nào mà AWS SDK hỗ trợ. Amazon SQS hỗ trợ cả hàng đợi tiêu chuẩn và FIFO.</p>
 <p>Một hệ thống message phân tán gồm 3 phần chính: các thành phần của hệ thống phân tán, hàng đợi của bạn (được phân phối trên máy chủ Amazon SQS) và các tin nhắn trong hàng đợi. Ví dụ: hệ thống của bạn có một số nhà sản xuất (thành phần gửi thông điệp đến hàng đợi) và người tiêu dùng (thành phần nhận thông báo từ hàng đợi). Hàng đợi (chứa các thông báo) lưu trữ các thông báo trên máy chủ Amazon SQS.</p>
-<p><img src="/images/sqs-basic.png?featherlight=false&amp;width=55pc" alt="SeverlessExample"></p>
+<p><img alt="SeverlessExample" src="/images/sqs-basic.png?featherlight=false&width=55pc"></p>
 <h4 id="amazon-simple-notification-service">Amazon Simple Notification Service</h4>
 <p>Amazon Simple Notification Service (SNS) một dịch vụ được quản lý để cung cấp dịch vụ gửi tin nhắn từ publishers đến subscribers (còn được gọi là producers và consumers). Publishers giao tiếp không đồng bộ với subscribers bằng cách gửi tin nhắn đến một topic, đây là điểm truy cập và kênh giao tiếp logic. Khách hàng có thể đăng ký SNS topic và nhận các tin nhắn đã xuất bản bằng cách sử dụng loại điểm cuối được hỗ trợ, chẳng hạn như Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, email, thông báo đẩy trên thiết bị di động và tin nhắn văn bản di động (SMS).</p>
-<p><img src="/images/sns-basic.png?featherlight=false&amp;width=50pc" alt="SeverlessExample"></p>
+<p><img alt="SeverlessExample" src="/images/sns-basic.png?featherlight=false&width=50pc"></p>
 <h4 id="nội-dung">Nội dung</h4>
 <ol>
-<li><a href="1-preparation/">Chuẩn bị</a></li>
-<li><a href="2-create-sqs-and-sns/">Tạo hàng đợi và SNS topic</a></li>
-<li><a href="3-create-api-lambda-function/">Tạo API và Lambda function</a></li>
-<li><a href="4-test-operation/">Kiểm tra hoạt động</a></li>
-<li><a href="5-cleanup">Dọn dẹp tài nguyên</a></li>
+<li><a href="/vi/1-preparation/">Chuẩn bị</a></li>
+<li><a href="/vi/2-create-sqs-and-sns/">Tạo hàng đợi và SNS topic</a></li>
+<li><a href="/vi/3-create-api-lambda-function/">Tạo API và Lambda function</a></li>
+<li><a href="/vi/4-test-operation/">Kiểm tra hoạt động</a></li>
+<li><a href="/vi/5-cleanup/">Dọn dẹp tài nguyên</a></li>
 </ol>
 	
   
@@ -696,19 +696,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1708425075"></script>
-    <script src="/js/jquery.sticky.js?1708425075"></script>
-    <script src="/js/featherlight.min.js?1708425075"></script>
-    <script src="/js/highlight.pack.js?1708425075"></script>
+    <script src="/js/clipboard.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1735810271"></script>
+    <script src="/js/jquery.sticky.js?1735810271"></script>
+    <script src="/js/featherlight.min.js?1735810271"></script>
+    <script src="/js/highlight.pack.js?1735810271"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1708425075"></script>
-    <script src="/js/learn.js?1708425075"></script>
-    <script src="/js/hugo-learn.js?1708425075"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1735810271"></script>
+    <script src="/js/learn.js?1735810271"></script>
+    <script src="/js/hugo-learn.js?1735810271"></script>
 
-    <link href="/mermaid/mermaid.css?1708425075" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1708425075"></script>
+    <link href="/mermaid/mermaid.css?1735810271" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1735810271"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

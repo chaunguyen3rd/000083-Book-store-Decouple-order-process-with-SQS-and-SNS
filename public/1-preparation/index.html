@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Preparation :: SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</title>
 
     
-    <link href="/css/nucleus.css?1708425075" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1708425075" rel="stylesheet">
-    <link href="/css/hybrid.css?1708425075" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1708425075" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1708425075" rel="stylesheet">
-    <link href="/css/auto-complete.css?1708425075" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1708425075" rel="stylesheet">
-    <link href="/css/theme.css?1708425075" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1708425075" rel="stylesheet">
+    <link href="/css/nucleus.css?1735812959" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1735812959" rel="stylesheet">
+    <link href="/css/hybrid.css?1735812959" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1735812959" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1735812959" rel="stylesheet">
+    <link href="/css/auto-complete.css?1735812959" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1735812959" rel="stylesheet">
+    <link href="/css/theme.css?1735812959" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1735812959" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1708425075" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1735812959" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1708425075"></script>
+    <script src="/js/jquery-3.3.1.min.js?1735812959"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1708425075"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1708425075"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1735812959"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1735812959"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1708425075"></script>
+<script type="text/javascript" src="/js/search.js?1735812959"></script>
 
     
   </div>
@@ -83,7 +83,7 @@
   
     
     <li data-nav-id="/1-preparation/" title="Preparation" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -379,7 +379,7 @@
                   
                     
                     
-                      <option id="en" value="/1-preparation/" selected>English</option>
+                      <option id="en" value="//localhost:1313/1-preparation/" selected>English</option>
                     
                   
               
@@ -393,7 +393,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/1-preparation/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/1-preparation/">Tiếng Việt</option>
                     
                   
               
@@ -517,94 +517,208 @@
 
 	<p>Before we get to the main content of this workshop, we need to reset the web application.</p>
 <ol>
-<li>Download the below source code</li>
-</ol>
+<li>
+<p>Download the below source code.</p>
 
-<section class="attachments ">
-	<label>
-		<i class="fas fa-paperclip" aria-hidden="true"></i>
-		Source code
-	</label>
-	
-		
-	
-	<div class="attachments-files">
-	
-		
-		
-			
-		
-	
-		
-		
-			
-				<li>
-					<a href="/1-preparation/_index.files/fcj-book-store-sam-ws6.zip" >
-						fcj-book-store-sam-ws6.zip
-					</a>
-					(8269 ko)
-				</li>
-			
-		
-	
-	<div>
-	
-</section>
+    <section class="attachments ">
+    	<label>
+    		<i class="fas fa-paperclip" aria-hidden="true"></i>
+    		Source code
+    	</label>
+    	
+    		
+    	
+    	<div class="attachments-files">
+    	
+    		
+    		
+    			
+    		
+    	
+    		
+    		
+    			
+    				<li>
+    					<a href="/1-preparation/_index.files/fcj-book-store-sam-ws6.zip" >
+    						fcj-book-store-sam-ws6.zip
+    					</a>
+    					(8269 ko)
+    				</li>
+    			
+    		
+    	
+    	<div>
+    	
+    </section>
+    
 
+</li>
+<li>
+<p>Unzip the source code, open <strong>template.yaml</strong>.</p>
+<ul>
+<li>
+<p>Change <strong>chaunguyen.site</strong> value to your domain name.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">route53HostedZoneName</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Default</span>: <span style="color:#ae81ff">chaunguyen.site</span>
+</span></span></code></pre></div><p><img alt="Preparation" src="/images/temp/1/6.png?width=90pc"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Run the below commands.
 
-<ol start="2">
-<li>Run the below commands</li>
-</ol>
-<pre tabindex="0"><code>sam build
-sam deploy --guided
-</code></pre><ol start="3">
-<li>Enter the following content:</li>
-</ol>
+<div class="notices note" ><p>Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS credentials before running the commands.</p>
+</div>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sam build
+</span></span><span style="display:flex;"><span>sam validate
+</span></span><span style="display:flex;"><span>sam deploy --guided
+</span></span></code></pre></div></li>
+<li>
+<p>Enter the following content. Leave as default.</p>
 <ul>
 <li>Stack Name []: <code>fcj-book-store</code></li>
-<li>AWS Region []: <code>ap-southeast-1</code></li>
+<li>AWS Region []: <code>us-east-1</code></li>
 <li>Confirm changes before deploy [Y/n]: y</li>
 <li>Allow SAM CLI IAM role creation [Y/n]: y</li>
 <li>Disable rollback [y/N]: n</li>
-<li>BooksList may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>BookCreate may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>BookDelete may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>Login may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>Register may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>ConfirmUser may not have authorization defined, Is this okay? [y/N]: y</li>
-<li>Save arguments to configuration file [Y/n]: y</li>
+<li>Save arguments to configuration file [Y/n]: y
+<img alt="Preparation" src="/images/temp/1/1.png?width=90pc"></li>
 </ul>
-<ol start="4">
-<li>
-<p>Open <a href="https://ap-southeast-1.console.aws.amazon.com/apigateway/main/apis?region=ap-southeast-1">AWS APIs Gateway console</a></p>
 </li>
 <li>
-<p>Click <strong>API Gateway REST API to Lambda</strong></p>
-</li>
-</ol>
-<p><img src="/images/1-preparation/1-preparation-3.png?featherlight=false&amp;width=90pc" alt="Preparation"></p>
-<ol start="6">
-<li>Click <strong>Stage</strong> on the left menu</li>
-</ol>
+<p>Follow this instruction if your domain registrar isn&rsquo;t AWS.
+
+<div class="notices note" ><p><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html">Making Route 53 the DNS service for a domain that&rsquo;s in use</a></p>
+</div>
+</p>
 <ul>
-<li>Click <strong>staging</strong></li>
-<li>Record the <strong>InvokeURL</strong></li>
+<li>Copy these NS type records from your Route53 hosted zone.
+<img alt="Preparation" src="/images/temp/1/4.png?width=90pc"></li>
+<li>Paste those NS records to your DNS domain registrar.
+<img alt="Preparation" src="/images/temp/1/5.png?width=90pc"></li>
 </ul>
-<p><img src="/images/1-preparation/1-preparation-4.png?featherlight=false&amp;width=90pc" alt="Preparation"></p>
-<ol start="7">
-<li>Run the below command to download the source code of <strong>FCJ-Serverless-Workshop</strong> to your device</li>
+</li>
+<li>
+<p>Open <strong>template.yaml</strong> in the source code you downloaded before.</p>
+<ul>
+<li>
+<p>Uncomment this code block.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># FcjCertificate:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Type: AWS::CertificateManager::Certificate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Properties:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     DomainName: !Sub &#34;*.${route53HostedZoneName}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     SubjectAlternativeNames:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       - !Ref route53HostedZoneName</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     ValidationMethod: DNS</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     DomainValidationOptions:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       - DomainName: !Sub &#34;*.${route53HostedZoneName}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         HostedZoneId: !Ref FcjRoute53HostedZone</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FcjCloudFrontDistribution:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Type: AWS::CloudFront::Distribution</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Properties:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     DistributionConfig:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       Enabled: true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       Origins:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         - DomainName: !GetAtt FcjBookShop.RegionalDomainName</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           Id: !Ref FcjBookShop</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           CustomOriginConfig:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             HTTPPort: 80</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             HTTPSPort: 443</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             OriginProtocolPolicy: match-viewer</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             OriginSSLProtocols:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#               - TLSv1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#               - TLSv1.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#               - TLSv1.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       Aliases:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         - !Sub &#34;www.${route53HostedZoneName}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         - !Ref route53HostedZoneName</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       DefaultCacheBehavior:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         CachePolicyId: !Ref cachePolicyId</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         ViewerProtocolPolicy: redirect-to-https</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         TargetOriginId: !Ref FcjBookShop</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         AllowedMethods:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           - GET</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#           - HEAD</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       DefaultRootObject: index.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       ViewerCertificate:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         AcmCertificateArn: !Ref FcjCertificate</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         SslSupportMethod: sni-only</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FcjRoute53RecordSet:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Type: AWS::Route53::RecordSet</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#   Properties:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     HostedZoneId: !Ref FcjRoute53HostedZone</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     Name: !Sub &#34;www.${route53HostedZoneName}.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     Type: A</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     AliasTarget:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       DNSName: !GetAtt FcjCloudFrontDistribution.DomainName</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       HostedZoneId: !Ref cloudFrontHostedZoneId</span>
+</span></span></code></pre></div></li>
+</ul>
+<p><img alt="Preparation" src="/images/temp/1/6.png?width=90pc"></p>
+</li>
+<li>
+<p>Run the below commands.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sam build
+</span></span><span style="display:flex;"><span>sam validate
+</span></span><span style="display:flex;"><span>sam deploy --guided
+</span></span></code></pre></div><p><img alt="Preparation" src="/images/temp/1/7.png?width=90pc"></p>
+</li>
+<li>
+<p>Download the <strong>FCJ-Serverless-Workshop</strong> code to your device.</p>
+<ul>
+<li>
+<p>Open a terminal on your computer in the folder where you want to save the source code.</p>
+</li>
+<li>
+<p>Copy the below command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/AWS-First-Cloud-Journey/FCJ-Serverless-Workshop.git
+</span></span><span style="display:flex;"><span>cd FCJ-Serverless-Workshop
+</span></span></code></pre></div></li>
+<li>
+<p>Open <strong>FCJ-Serverless-Workshop</strong> with VSCode and edit.</p>
+<ul>
+<li>
+<p>Open <strong>src/component/Authen/Login.js</strong> and edit as below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">password</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p><img alt="Preparation" src="/images/temp/1/2.png?width=90pc"></p>
+</li>
+<li>
+<p>Next, open <strong>src/component/Authen/Register.js</strong> and edit as below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">password</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">confirmation_code</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">code</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p><img alt="Preparation" src="/images/temp/1/3.png?width=90pc"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Back to <strong>FCJ-Serverless-Workshop</strong> root path and run the commands below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn
+</span></span><span style="display:flex;"><span>yarn build
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>We have finished building the front-end. Next execute the following command to upload the <strong>build</strong> folder to S3.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 cp build s3://fcj-book-shop-by-myself --recursive
+</span></span></code></pre></div></li>
+<li>
+<p>Open browser</p>
+</li>
 </ol>
-<pre tabindex="0"><code>git clone https://github.com/AWS-First-Cloud-Journey/FCJ-Serverless-Workshop.git
-</code></pre><ol start="8">
-<li>Run the below commands to build project</li>
-</ol>
-<pre tabindex="0"><code>cd FCJ-Serverless-Workshop
-yarn build
-</code></pre><ol start="9">
-<li>We have finished building the front-end. Next, run the below command to upload <strong>build</strong> folder to S3 bucket</li>
-</ol>
-<pre tabindex="0"><code>aws s3 cp build s3://fcj-book-store --recursive
-</code></pre><p>So we have rebuilt the web application.</p>
+<p>So we have rebuilt the web application.</p>
 
 
 
@@ -814,19 +928,19 @@ yarn build
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1708425075"></script>
-    <script src="/js/jquery.sticky.js?1708425075"></script>
-    <script src="/js/featherlight.min.js?1708425075"></script>
-    <script src="/js/highlight.pack.js?1708425075"></script>
+    <script src="/js/clipboard.min.js?1735812959"></script>
+    <script src="/js/perfect-scrollbar.min.js?1735812959"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1735812959"></script>
+    <script src="/js/jquery.sticky.js?1735812959"></script>
+    <script src="/js/featherlight.min.js?1735812959"></script>
+    <script src="/js/highlight.pack.js?1735812959"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1708425075"></script>
-    <script src="/js/learn.js?1708425075"></script>
-    <script src="/js/hugo-learn.js?1708425075"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1735812959"></script>
+    <script src="/js/learn.js?1735812959"></script>
+    <script src="/js/hugo-learn.js?1735812959"></script>
 
-    <link href="/mermaid/mermaid.css?1708425075" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1708425075"></script>
+    <link href="/mermaid/mermaid.css?1735812959" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1735812959"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

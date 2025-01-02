@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Serverless - Processing orders with SQS and SNS :: SERVERLESS - PROCESSING ORDERS WITH SQS AND SNS</title>
 
     
-    <link href="/css/nucleus.css?1708425075" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1708425075" rel="stylesheet">
-    <link href="/css/hybrid.css?1708425075" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1708425075" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1708425075" rel="stylesheet">
-    <link href="/css/auto-complete.css?1708425075" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1708425075" rel="stylesheet">
-    <link href="/css/theme.css?1708425075" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1708425075" rel="stylesheet">
+    <link href="/css/nucleus.css?1735810271" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1735810271" rel="stylesheet">
+    <link href="/css/hybrid.css?1735810271" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1735810271" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1735810271" rel="stylesheet">
+    <link href="/css/auto-complete.css?1735810271" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1735810271" rel="stylesheet">
+    <link href="/css/theme.css?1735810271" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1735810271" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1708425075" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1735810271" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1708425075"></script>
+    <script src="/js/jquery-3.3.1.min.js?1735810271"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1708425075"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1708425075"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1735810271"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1735810271"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1708425075"></script>
+<script type="text/javascript" src="/js/search.js?1735810271"></script>
 
     
   </div>
@@ -379,7 +379,7 @@
                   
                     
                     
-                      <option id="en" value="/" selected>English</option>
+                      <option id="en" value="//localhost:1313/" selected>English</option>
                     
                   
               
@@ -393,7 +393,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/">Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/">Tiếng Việt</option>
                     
                   
               
@@ -475,7 +475,7 @@
 <h4 id="overview">Overview</h4>
 <p>In the workshop 6 of this series, we will process user orders using Amazon SQS and SNS. When user places an order, the order will be send to the queue and SNS will notify the admin about about the new order. Admin has the right to view all orders and process or delete them.</p>
 <p>The architecture of the web application:
-<img src="/images/serverless-diagram.png?featherlight=false&amp;width=50pc" alt="SeverlessExample"></p>
+<img alt="SeverlessExample" src="/images/serverless-diagram.png?featherlight=false&width=50pc"></p>
 <ul>
 <li>When user places an order (click <strong>Checkout</strong>), the POST API /books/order puts the order&rsquo;s information into a queue you create, then pulish a message via Amazon SNS topic</li>
 <li>GET API /books/order is called when admin uses order management to get all pending and processed orders in DynamoDB table</li>
@@ -485,17 +485,17 @@
 <h4 id="amazon-simple-queue-service">Amazon Simple Queue Service</h4>
 <p>Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. It can scale independently from our application. It provides a generic web services API that you can access using any programming language that the AWS SDK supports.</p>
 <p>There are three main parts in a distributed messaging system: the components of your distributed system, your queue (distributed on Amazon SQS servers), and the messages in the queue. Example: your system has several producers (components that send messages to the queue) and consumers (components that receive messages from the queue). The queue (which holds messages) stores the messages on Amazon SQS servers.</p>
-<p><img src="/images/sqs-basic.png?featherlight=false&amp;width=55pc" alt="SeverlessExample"></p>
+<p><img alt="SeverlessExample" src="/images/sqs-basic.png?featherlight=false&width=55pc"></p>
 <h4 id="amazon-simple-notification-service">Amazon Simple Notification Service</h4>
 <p>Amazon Simple Notification Service (Amazon SNS) is a managed service that provides message delivery from publishers to subscribers (also known as producers and consumers). Publishers communicate asynchronously with subscribers by sending messages to a topic, which is a logical access point and communication channel. Clients can subscribe to the SNS topic and receive published messages using a supported endpoint type, such as Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, email, mobile push notifications, and mobile text messages (SMS).</p>
-<p><img src="/images/sns-basic.png?featherlight=false&amp;width=50pc" alt="SeverlessExample"></p>
+<p><img alt="SeverlessExample" src="/images/sns-basic.png?featherlight=false&width=50pc"></p>
 <h4 id="content">Content</h4>
 <ol>
-<li><a href="1-preparation/">Preparation</a></li>
-<li><a href="2-create-sqs-and-sns/">Create queue and SNS topic</a></li>
-<li><a href="3-create-api-lambda-function/">Create API and Lambda function</a></li>
-<li><a href="4-test-operation/">Test web operation</a></li>
-<li><a href="5-cleanup">Cleanup</a></li>
+<li><a href="/1-preparation/">Preparation</a></li>
+<li><a href="/2-create-sqs-and-sns/">Create queue and SNS topic</a></li>
+<li><a href="/3-create-api-lambda-function/">Create API and Lambda function</a></li>
+<li><a href="/4-test-operation/">Test web operation</a></li>
+<li><a href="/5-cleanup/">Cleanup</a></li>
 </ol>
 	
   
@@ -696,19 +696,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.min.js?1708425075"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1708425075"></script>
-    <script src="/js/jquery.sticky.js?1708425075"></script>
-    <script src="/js/featherlight.min.js?1708425075"></script>
-    <script src="/js/highlight.pack.js?1708425075"></script>
+    <script src="/js/clipboard.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.min.js?1735810271"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1735810271"></script>
+    <script src="/js/jquery.sticky.js?1735810271"></script>
+    <script src="/js/featherlight.min.js?1735810271"></script>
+    <script src="/js/highlight.pack.js?1735810271"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1708425075"></script>
-    <script src="/js/learn.js?1708425075"></script>
-    <script src="/js/hugo-learn.js?1708425075"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1735810271"></script>
+    <script src="/js/learn.js?1735810271"></script>
+    <script src="/js/hugo-learn.js?1735810271"></script>
 
-    <link href="/mermaid/mermaid.css?1708425075" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1708425075"></script>
+    <link href="/mermaid/mermaid.css?1735810271" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1735810271"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
