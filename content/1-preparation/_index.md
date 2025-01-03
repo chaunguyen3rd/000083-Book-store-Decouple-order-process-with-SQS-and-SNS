@@ -169,6 +169,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     aws s3 cp build s3://fcj-book-shop-by-myself --recursive
     ```
 
-10. Open browser
+10. Enter the following links in a new tab in your web browser: ``http://www.DOMAIN``, replace all DOMAIN with your domain name. All those links redirect to the new path, replace http with https
+    ![Preparation](/images/temp/1/8.png?width=90pc)
 
 So we have rebuilt the web application.
