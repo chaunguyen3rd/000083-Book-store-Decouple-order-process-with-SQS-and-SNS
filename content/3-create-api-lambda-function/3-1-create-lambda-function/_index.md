@@ -1,32 +1,48 @@
 ---
-title : "Tạo Lambda function"
+title : "Create Lambda function"
 date :  "`r Sys.Date()`" 
 weight : 1
 chapter : false
 pre : " <b> 3.1 </b> "
 ---
-Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới để lưu dữ liệu đơn hàng đã được xử lý và bốn Lambda function để lưu đơn hàng, quản lý đơn hàng, xoá đơn hàng, xử lý đơn hàng bằng SAM template.
+In this step, we will create a new DynamoDB table to store processed order data and four Lambda functions to save orders, manage orders, delete orders, and process orders using a SAM template.
 
-1. Mở tệp **template.yaml** của thư mục source code **fcj-book-store-sam-ws6** đã tải về
-- Thêm đoạn script dưới đây để tạo một bảng **Orders** trong DynamoDB.
+1. Open **template.yaml** in the source code you downloaded before.
 
-```
-  OrdersTable:
-    Type: AWS::Serverless::SimpleTable
-    Properties:
-      TableName: Orders
-      PrimaryKey:
-        Name: id
+    - Add the following scripts below to create **FcjOrdersTable** table.
+
+      ```yaml
+      orderTable:
         Type: String
-```
+        Default: OrdersTable
+      ```
 
-![CreateOrderTable](/images/3-create-api-lambda-function/3-create-lambda-function-1.png?featherlight=false&width=90pc)
+      ![CreateOrderTable](/images/temp/1/27.png?width=90pc)
 
-2. Chạy các lệnh dưới đây
-```
-sam build
-sam deploy --guided
-```
+      ```yaml
+      FcjOrdersTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+          TableName: !Ref orderTable
+          BillingMode: PAY_PER_REQUEST
+          AttributeDefinitions:
+            - AttributeName: id
+              AttributeType: S
+          KeySchema:
+            - AttributeName: id
+              KeyType: HASH
+      ```
+
+      ![CreateOrderTable](/images/temp/1/28.png?width=90pc)
+
+
+2. Run the below commands.
+
+    ```bash
+    sam build
+    sam validate
+    sam deploy --guided
+    ```
 ![CreateOrderTable](/images/3-create-api-lambda-function/3-create-lambda-function-2.png?featherlight=false&width=90pc)
 
 - Mở bảng điều khiển của [AWS DynamDB](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#tables) để kiểm tra
