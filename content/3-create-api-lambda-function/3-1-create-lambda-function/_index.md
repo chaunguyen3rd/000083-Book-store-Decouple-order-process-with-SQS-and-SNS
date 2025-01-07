@@ -7,8 +7,47 @@ pre : " <b> 3.1 </b> "
 ---
 In this step, we will create a new DynamoDB table to store processed order data and four Lambda functions to save orders, manage orders, delete orders, and process orders using a SAM template.
 
-1. Open **template.yaml** in the source code you downloaded before.
+#### Preparation
 
+1. Open **template.yaml** in the source code you downloaded before.
+    - Comment this code block.
+
+      ```yaml
+      # BookApiDeployment:
+      #   Type: AWS::ApiGateway::Deployment
+      #   Properties:
+      #     RestApiId: !Ref BookApi
+      #   DependsOn:
+      #     - BookApiGet
+      #     - BookApiCreate
+      #     - BookApiDelete
+      #     - LoginApi
+      #     - RegisterApi
+      #     - ConfirmApi
+
+      # BookApiStage:
+      #   Type: AWS::ApiGateway::Stage
+      #   Properties:
+      #     RestApiId: !Ref BookApi
+      #     StageName: !Ref stage
+      #     DeploymentId: !Ref BookApiDeployment
+      ```
+
+      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
+
+2. Run the below commands.
+
+    ```bash
+    sam build
+    sam validate
+    sam deploy --guided
+    ```
+
+    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
+
+#### Create FcjOrdersTable DynamoDB table
+
+1. Open **template.yaml** in the source code you downloaded before.
     - Add the following scripts below to create **FcjOrdersTable** table.
 
       ```yaml
@@ -35,7 +74,6 @@ In this step, we will create a new DynamoDB table to store processed order data 
 
       ![CreateOrderTable](/images/temp/1/28.png?width=90pc)
 
-
 2. Run the below commands.
 
     ```bash
@@ -43,13 +81,231 @@ In this step, we will create a new DynamoDB table to store processed order data 
     sam validate
     sam deploy --guided
     ```
-![CreateOrderTable](/images/3-create-api-lambda-function/3-create-lambda-function-2.png?featherlight=false&width=90pc)
 
-- Mở bảng điều khiển của [AWS DynamDB](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#tables) để kiểm tra
+    ![CreateOrderTable](/images/temp/1/29.png?width=90pc)
 
-![CreateOrderTable](/images/3-create-api-lambda-function/3-create-lambda-function-3.png?featherlight=false&width=90pc)
+3. Open [AWS DynamoDB](https://us-east-1.console.aws.amazon.com/dynamodbv2/home?region=us-east-1#tables) console to check.
+    ![CreateOrderTable](/images/temp/1/30.png?width=90pc)
+
+#### Create FcjCheckOutOrder function
+
+1. Open **template.yaml** in the source code you downloaded before.
+    - Add the following scripts below to create **FcjCheckOutOrder** function.
+      - Change **checkoutQueueUrl** and **orderTopicArn** value to your value.
+
+        ```yaml
+        checkoutQueueName:
+          Type: String
+          Default: checkout-queue
+
+        checkoutQueueUrl:
+          Type: String
+          Default: https://sqs.us-east-1.amazonaws.com/017820706022/checkout-queue
+
+        orderTopicName:
+          Type: String
+          Default: order-notice
+
+        orderTopicArn:
+          Type: String
+          Default: arn:aws:sns:us-east-1:017820706022:order-notice
+
+        checkoutPathPart:
+          Type: String
+          Default: order
+        ```
+
+        ![CreateOrderTable](/images/temp/1/31.png?width=90pc)
+
+        ```yaml
+        FcjCheckOutOrderFunction:
+          Type: AWS::Serverless::Function
+          Properties:
+            CodeUri: fcj-book-shop/checkout_order
+            Handler: checkout_order.lambda_handler
+            Runtime: python3.11
+            FunctionName: checkout_order
+            Environment:
+              Variables:
+                SQS_QUEUE_URL: !Ref checkoutQueueUrl
+                SNS_TOPIC_ARN: !Ref orderTopicArn
+            Architectures:
+              - x86_64
+            Policies:
+              - Statement:
+                  - Sid: VisualEditor0
+                    Effect: Allow
+                    Action:
+                      - sqs:*
+                    Resource:
+                      - !Sub "arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:${checkoutQueue}"
+                  - Sid: VisualEditor1
+                    Effect: Allow
+                    Action:
+                      - sns:Publish
+                    Resource:
+                      - !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${orderTopic}"
+
+        FcjCheckoutOrderResource:
+          Type: AWS::ApiGateway::Resource
+          Properties:
+            RestApiId: !Ref BookApi
+            ParentId: !GetAtt BookApi.RootResourceId
+            PathPart: !Ref checkoutPathPart
+
+        FcjCheckoutOrderApiOptions:
+          Type: AWS::ApiGateway::Method
+          Properties:
+            HttpMethod: OPTIONS
+            RestApiId: !Ref BookApi
+            ResourceId: !Ref FcjCheckoutOrderResource
+            AuthorizationType: NONE
+            Integration:
+              Type: MOCK
+              IntegrationResponses:
+                - StatusCode: "200"
+                  ResponseParameters:
+                    method.response.header.Access-Control-Allow-Origin: "'*'"
+                    method.response.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,DELETE'"
+                    method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+            MethodResponses:
+              - StatusCode: "200"
+                ResponseParameters:
+                  method.response.header.Access-Control-Allow-Origin: true
+                  method.response.header.Access-Control-Allow-Methods: true
+                  method.response.header.Access-Control-Allow-Headers: true
+
+        FcjCheckoutOrderApi:
+          Type: AWS::ApiGateway::Method
+          Properties:
+            HttpMethod: POST
+            RestApiId: !Ref BookApi
+            ResourceId: !Ref FcjCheckoutOrderResource
+            AuthorizationType: NONE
+            Integration:
+              Type: AWS_PROXY
+              IntegrationHttpMethod: POST # For Lambda integrations, you must set the integration method to POST
+              Uri: !Sub >-
+                arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${FcjCheckOutOrderFunction.Arn}/invocations
+            MethodResponses:
+              - StatusCode: "200"
+                ResponseParameters:
+                  method.response.header.Access-Control-Allow-Origin: true
+                  method.response.header.Access-Control-Allow-Methods: true
+                  method.response.header.Access-Control-Allow-Headers: true
+
+        FcjCheckoutOrderApiInvokePermission:
+          Type: AWS::Lambda::Permission
+          Properties:
+            FunctionName: !Ref FcjCheckOutOrderFunction
+            Action: lambda:InvokeFunction
+            Principal: apigateway.amazonaws.com
+            SourceAccount: !Ref "AWS::AccountId"
+        ```
+
+        ![CreateOrderTable](/images/temp/1/32.png?width=90pc)
+
+2. The directory structure is as follows.
+
+    ```bash
+    fcj-book-shop-sam-ws3
+    ├── fcj-book-shop
+    │   ├── checkout_order
+    │   │   └── checkout_order.py
+    │   ├── ...
+    │
+    └── template.yaml
+    ```
+
+    - Create **checkout_order** folder in **fcj-book-shop-sam-ws6/fcj-book-shop/** folder.
+    - Create **checkout_order.py** file and copy the following code to it.
+
+      ```py
+      import json
+      import boto3
+      import os
+
+
+      def handle_checkout(event, context):
+          sqs = boto3.client('sqs')
+          sns = boto3.client('sns')
+
+          sqs_queue_url = os.environ['SQS_QUEUE_URL']
+          sns_topic_arn = os.environ['SNS_TOPIC_ARN']
+          sns_topic_subject = "New order received. Please process."
+
+          try:
+              body = json.loads(event['body'])
+
+              print(f"body: {body}")
+
+              # Send to SQS
+              sqs_response = sqs.send_message(
+                  QueueUrl=sqs_queue_url,
+                  MessageBody=json.dumps(body)
+              )
+
+              # Send to SNS
+              sns_response = sns.publish(
+                  TopicArn=sns_topic_arn,
+                  Message=f"New order received: {json.dumps(body)}",
+                  Subject=sns_topic_subject
+              )
+
+              return {
+                  'statusCode': 200,
+                  'body': json.dumps({
+                      'message': 'Order processed successfully',
+                      'sqs_message_id': sqs_response['MessageId'],
+                      'sns_message_id': sns_response['MessageId']
+                  })
+              }
+
+          except Exception as e:
+              print(f"Error processing order: {e}")
+              raise Exception(f"Error processing order: {e}")
+      ```
+
+      ![CreateOrderTable](/images/temp/1/37.png?width=90pc)
+
+3. Uncomment this code block.
+
+    ```yaml
+    BookApiDeployment:
+      Type: AWS::ApiGateway::Deployment
+      Properties:
+        RestApiId: !Ref BookApi
+      DependsOn:
+        - BookApiGet
+        - BookApiCreate
+        - BookApiDelete
+        - LoginApi
+        - RegisterApi
+        - ConfirmApi
+        - FcjCheckoutOrderApi
+
+    BookApiStage:
+      Type: AWS::ApiGateway::Stage
+      Properties:
+        RestApiId: !Ref BookApi
+        StageName: !Ref stage
+        DeploymentId: !Ref BookApiDeployment
+    ```
+
+    ![CreateOrderTable](/images/temp/1/36.png?width=90pc)
+
+4. Run the below commands.
+
+    ```bash
+    sam build
+    sam validate
+    sam deploy --guided
+    ```
+
+    ![CreateOrderTable](/images/temp/1/34.png?width=90pc)
 
 3. Thêm đoạn script dưới đây để tạo function **CheckOutOrder**
+
 ```
   CheckOutOrder:
     Type: AWS::Serverless::Function
@@ -82,6 +338,7 @@ In this step, we will create a new DynamoDB table to store processed order data 
 ![CreateFunctions](/images/3-create-api-lambda-function/3-create-lambda-function-4.png?featherlight=false&width=90pc)
 
 - Thêm đoạn script dưới đây để tạo function **OrderManagement**
+
 ```
   OrderManagement:
     Type: AWS::Serverless::Function
@@ -114,6 +371,7 @@ In this step, we will create a new DynamoDB table to store processed order data 
 ![CreateFunctions](/images/3-create-api-lambda-function/3-create-lambda-function-5.png?featherlight=false&width=90pc)
 
 - Thêm đoạn script dưới đây để tạo function **HandleOrder**
+
 ```
   HandleOrder:
     Type: AWS::Serverless::Function
@@ -143,6 +401,7 @@ In this step, we will create a new DynamoDB table to store processed order data 
 ![CreateFunctions](/images/3-create-api-lambda-function/3-create-lambda-function-6.png?featherlight=false&width=90pc)
 
 - Thêm đoạn script dưới đây để tạo function **DeleteOrder**
+
 ```
   DeleteOrder:
     Type: AWS::Serverless::Function
@@ -171,6 +430,7 @@ In this step, we will create a new DynamoDB table to store processed order data 
 ![CreateFunctions](/images/3-create-api-lambda-function/3-create-lambda-function-7.png?featherlight=false&width=90pc)
 
 4. Thêm các thư mục và tệp source code cho các function. Cấu trúc thư mục như sau:
+
 ```
 fcj-book-store-sam-ws6
 ├── fcj-book-store
@@ -185,8 +445,10 @@ fcj-book-store-sam-ws6
 │   ├── ....
 └── template.yaml
 ```
+
 - Tạo thư mục tên **checkout_order** trong thư mục **fcj-book-store-sam-ws6/fcj-book-store**
 - Tạo tệp **checkout_order.py** và sao chép đoạn code sau vào nó.
+
 ```
 import json
 import boto3
@@ -230,8 +492,9 @@ def lambda_handler(event, context):
 ```
 
 - Tạo thư mục tên **order_management** trong thư mục **fcj-book-store-sam-ws6/fcj-book-store**
-- Tạo 
+- Tạo
  **order_management.py** và sao chép đoạn code sau vào nó.
+
 ```
 import boto3
 import json
@@ -335,9 +598,11 @@ def lambda_handler(event, context):
     }
 
 ```
+
 - Tạo thư mục tên **handle_order** trong thư mục **fcj-book-store-sam-ws6/fcj-book-store**
-- Tạo 
+- Tạo
  **handle_order.py** và sao chép đoạn code sau vào nó.
+
 ```
 import boto3
 import json
@@ -385,8 +650,10 @@ def lambda_handler(event, context):
     return response
 
 ```
+
 - Tạo thư mục tên **delete_order** trong thư mục **fcj-book-store-sam-ws6/fcj-book-store**
 - Tạo tệp **delete_order.py** và sao chép đoạn code sau vào nó.
+
 ```
 import boto3
 import json
@@ -420,7 +687,9 @@ def lambda_handler(event, context):
     
     return response
 ```
+
 5. Chạy các lệnh dưới đây
+
 ```
 sam build
 sam deploy --guided
