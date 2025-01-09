@@ -5,7 +5,7 @@ weight : 3
 chapter : false
 pre : " <b> 3.3 </b> "
 ---
-In this step, we will create a new DynamoDB table using a SAM template.
+In this step, we will create a new order_management Lambda function using a SAM template.
 
 #### Preparation
 
@@ -33,7 +33,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -43,46 +43,82 @@ In this step, we will create a new DynamoDB table using a SAM template.
     sam deploy --guided
     ```
 
-    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
+    ![CreateOrderManagementFunction](/images/temp/1/35.png?width=90pc)
 
-#### Create FcjOrdersTable DynamoDB table
+#### Create FcjOrderManagement function
 
 1. Open **template.yaml** in the source code you downloaded before.
-    - Add the following scripts below to create **FcjOrdersTable** table.
+    - Add the following scripts below to create **FcjOrderManagement** function.
 
       ```yaml
-      orderTable:
-        Type: String
-        Default: OrdersTable
-      ```
-
-      ![CreateOrderTable](/images/temp/1/27.png?width=90pc)
-
-      ```yaml
-      FcjOrdersTable:
-        Type: AWS::DynamoDB::Table
+      FcjOrderManagementFunction:
+        Type: AWS::Serverless::Function
         Properties:
-          TableName: !Ref orderTable
-          BillingMode: PAY_PER_REQUEST
-          AttributeDefinitions:
-            - AttributeName: id
-              AttributeType: S
-          KeySchema:
-            - AttributeName: id
-              KeyType: HASH
+          CodeUri: fcj-book-shop/order_management
+          Handler: order_management.lambda_handler
+          Runtime: python3.11
+          FunctionName: order_management
+          Environment:
+            Variables:
+              QUEUE_NAME: !Ref checkoutQueueName
+          Architectures:
+            - x86_64
+          Policies:
+            - Statement:
+                - Sid: VisualEditor0
+                  Effect: Allow
+                  Action:
+                    - dynamodb:Query
+                  Resource:
+                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:${orderTable}"
+                - Sid: VisualEditor1
+                  Effect: Allow
+                  Action:
+                    - sqs:*
+                  Resource:
+                    - !Sub "arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:${checkoutQueueName}"
+
+      FcjOrderManagementApi:
+        Type: AWS::ApiGateway::Method
+        Properties:
+          HttpMethod: GET
+          RestApiId: !Ref BookApi
+          ResourceId: !Ref FcjCheckoutOrderResource
+          AuthorizationType: NONE
+          Integration:
+            Type: AWS_PROXY
+            IntegrationHttpMethod: POST # For Lambda integrations, you must set the integration method to POST
+            Uri: !Sub >-
+              arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${FcjOrderManagementFunction.Arn}/invocations
+          MethodResponses:
+            - StatusCode: "200"
+              ResponseParameters:
+                method.response.header.Access-Control-Allow-Origin: true
+                method.response.header.Access-Control-Allow-Methods: true
+                method.response.header.Access-Control-Allow-Headers: true
+
+      FcjOrderManagementApiInvokePermission:
+        Type: AWS::Lambda::Permission
+        Properties:
+          FunctionName: !Ref FcjOrderManagementFunction
+          Action: lambda:InvokeFunction
+          Principal: apigateway.amazonaws.com
+          SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateOrderTable](/images/temp/1/28.png?width=90pc)
-
-2. Run the below commands.
+2. The directory structure is as follows.
 
     ```bash
-    sam build
-    sam validate
-    sam deploy --guided
+    fcj-book-shop-sam-ws3
+    ├── fcj-book-shop
+    │   ├── checkout_order
+    │   │   └── checkout_order.py
+    │   ├── order_management
+    │   │   └── order_management.py
+    │   ├── ...
+    │
+    └── template.yaml
     ```
 
-    ![CreateOrderTable](/images/temp/1/29.png?width=90pc)
-
-3. Open [AWS DynamoDB](https://us-east-1.console.aws.amazon.com/dynamodbv2/home?region=us-east-1#tables) console to check.
-    ![CreateOrderTable](/images/temp/1/30.png?width=90pc)
+    - Create **order_management** folder in **fcj-book-shop-sam-ws6/fcj-book-shop/** folder.
+    - Create **order_management.py** file and copy the following code to it.
