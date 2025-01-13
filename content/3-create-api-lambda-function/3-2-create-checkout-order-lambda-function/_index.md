@@ -183,8 +183,15 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
       import boto3
       import os
 
+      headers = {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET,DELETE",
+          "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      }
 
-      def handle_checkout(event, context):
+
+      def lambda_handler(event, context):
           sqs = boto3.client('sqs')
           sns = boto3.client('sns')
 
@@ -212,6 +219,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
 
               return {
                   'statusCode': 200,
+                  'headers': headers,
                   'body': json.dumps({
                       'message': 'Order processed successfully',
                       'sqs_message_id': sqs_response['MessageId'],
