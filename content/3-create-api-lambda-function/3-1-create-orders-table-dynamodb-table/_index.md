@@ -67,9 +67,13 @@ In this step, we will create a new DynamoDB table using a SAM template.
           AttributeDefinitions:
             - AttributeName: id
               AttributeType: S
+            - AttributeName: book_id
+              AttributeType: S
           KeySchema:
             - AttributeName: id
               KeyType: HASH
+            - AttributeName: book_id
+              KeyType: RANGE
       ```
 
       ![CreateOrderTable](/images/temp/1/28.png?width=90pc)

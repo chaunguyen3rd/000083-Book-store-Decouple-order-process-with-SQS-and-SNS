@@ -272,14 +272,14 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
 
 1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Click **fcj-serverless-api**.
-      ![CreateCheckoutOrderFunction](/images/temp/1/38.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/38.png?width=90pc)
     - Click **Resources** on the left menu.
     - Check **/handle** just created.
-      ![CreateCheckoutOrderFunction](/images/temp/1/54.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/54.png?width=90pc)
 
 2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Click **Functions** on the left menu.
     - Choose **handle_order** function.
-      ![CreateCheckoutOrderFunction](/images/temp/1/55.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/55.png?width=90pc)
     - At **handle_order** page, check the function that just created.
-      <!-- ADD IMAGE 56 HERE -->
+      ![CreateHandleOrderFunction](/images/temp/1/56.png?width=90pc)
