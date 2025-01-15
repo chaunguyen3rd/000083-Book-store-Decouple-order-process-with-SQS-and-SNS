@@ -45,7 +45,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
   {{% notice note %}}
   [Making Route 53 the DNS service for a domain that's in use](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html)
   {{% /notice %}}
-      - Copy these NS type records from your Route53 hosted zone. 
+      - Copy these NS type records from your Route53 hosted zone.
         ![Preparation](/images/temp/1/4.png?width=90pc)
       - Paste those NS records to your DNS domain registrar.
         ![Preparation](/images/temp/1/5.png?width=90pc)
@@ -143,8 +143,8 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
 
         ```javascript
         data: JSON.stringify({
-          username: email,
-          password: password
+            username: email,
+            password: password
         })
         ```
 
@@ -156,6 +156,39 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
         ```
 
         ![Preparation](/images/temp/1/3.png?width=90pc)
+      - Next, open **src/component/Basket/Basket.js** and edit as below.
+
+        ```javascript
+        data: JSON.stringify({
+            books: order_data,
+            price: totalPrice.toFixed(2)
+        })
+        ```
+
+        ![Preparation](/images/temp/1/68.png?width=90pc)
+
+      - Then, open **src/component/Admin/OrderInfor.js** and edit as below.
+
+        ```javascript
+        data: JSON.stringify({
+            receiptHandle: orders[index].receiptHandle,
+        })
+        ```
+
+        ```javascript
+        data: JSON.stringify({
+            id: uuid(),
+            receiptHandle: orders[index].receiptHandle,
+            books: orders[index].books,
+            price: orders[index].price,
+        }),
+        ```
+
+        ![Preparation](/images/temp/1/67.png?width=90pc)
+
+      - Next, open **src/App.js** and edit ``isAdmin: true`` as below.
+        ![Preparation](/images/temp/1/64.png?width=90pc)
+
     - Back to **FCJ-Serverless-Workshop** root path and run the commands below.
 
       ```bash
@@ -169,7 +202,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     aws s3 cp build s3://fcj-book-shop-by-myself --recursive
     ```
 
-10. Enter the following links in a new tab in your web browser: ``http://www.DOMAIN``, replace all DOMAIN with your domain name. All those links redirect to the new path, replace http with https
+10. Enter the following links in a new tab in your web browser: ``http://www.DOMAIN``, replace all DOMAIN with your domain name. All those links redirect to the new path, replace http with https.
     ![Preparation](/images/temp/1/8.png?width=90pc)
 
 So we have rebuilt the web application.
