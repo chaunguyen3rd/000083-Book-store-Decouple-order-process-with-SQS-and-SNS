@@ -1,54 +1,43 @@
 ---
-title : "Tạo SNS topic"
+title : "Create SNS topic"
 date :  "`r Sys.Date()`" 
 weight : 2
 chapter : false
 pre : " <b> 2.2. </b> "
 ---
-1. Mở bảng điều khiển của [Amazon SNS](https://ap-southeast-1.console.aws.amazon.com/sns/v3/home?region=ap-southeast-1#/dashboard)
+1. Open [Amazon SNS console](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/dashboard)
+    - Click **Topics** on the left menu.
+    - Click **Create topic** button.
+      ![CreateSNS](/images/temp/1/18.png?width=90pc)
 
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-1.png?featherlight=false&width=90pc)
+2. At **Create topic** page.
+    - Click **Standard** at **Type**.
+    - Enter ``order-notice`` at **Name**.
+      ![CreateSNS](/images/temp/1/19.png?width=90pc)
+    - Leave as default, scroll down and click **Create topic** button.
+      ![CreateSNS](/images/temp/1/20.png?width=90pc)
 
-2. Ấn **Topics** ở menu phía bên trái
-- Ấn **Create topic**
+3. At **order-notice** page.
+    - Click **Subscriptions** tab.
+    - Click **Create subscription** button.
+      ![CreateSNS](/images/temp/1/21.png?width=90pc)
 
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-2.png?featherlight=false&width=90pc)
+4. At **Create subscription** page.
+    - Choose **Email** at **Protocol**.
+    - Enter your email at **Endpoint**.
+    - Click **Create subscription**.
+      ![CreateSNS](/images/temp/1/22.png?width=90pc)
 
-3. Chọn **Stardard** cho kiểu của topic
-- Nhập tên topic: `order-notic`
+5. Back to **order-notice** page.
+    - Click **Subscriptions** tab.
+    - Check the subscription that is just created with **Pending confirmation** status.
+      ![CreateSNS](/images/temp/1/23.png?width=90pc)
 
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-3.png?featherlight=false&width=90pc)
+6. Open your email box, search mail sent from **<no-reply@sns.amazonaws.com>**.
+    - Click on **Confirm subscription** link.
+      ![CreateSNS](/images/temp/1/24.png?width=90pc)
+    - It will direct you to a new tab.
+      ![CreateSNS](/images/temp/1/25.png?width=90pc)
 
-4. Kéo xuống cuối trang, ấn **Create topic**
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-4.png?featherlight=false&width=90pc)
-
-5. Ấn vào topic mà bạn vừa tạo
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-5.png?featherlight=false&width=90pc)
-
-6. Ấn **Create subscription**
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-6.png?featherlight=false&width=90pc)
-
-7. Chọn **Protocol** là **Email**
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-7.png?featherlight=false&width=90pc)
-
-8. Nhập email mà bạn đã đăng ký tài khoản trên Cognito và là admin
-- Ấn **Create subcription**
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-8.png?featherlight=false&width=90pc)
-
-9. Sau đó, subcription sẽ ở trạng thái đang xử lý
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-9.png?featherlight=false&width=90pc)
-
-10. Để xác nhận email của bạn, mở email đã đăng ký
-- Tìm mail được gửi đến từ địa **no-reply@sns.amazonaws.com**, ấn vào link để xác nhận
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-10.png?featherlight=false&width=90pc)
-
-11. Quay lại với sns topic, subcription đã được xác nhận
-
-![CreateSNS](/images/2-create-sqs-and-sns/2-2-create-sns-11.png?featherlight=false&width=90pc)
+7. Back to **order-notice** page, check the status **Confirmed** of the subscription that you just created.
+    ![CreateSNS](/images/temp/1/26.png?width=90pc)
