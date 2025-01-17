@@ -1,43 +1,43 @@
 ---
-title : "Create SNS topic"
+title : "Tạo chủ đề SNS"
 date :  "`r Sys.Date()`" 
 weight : 2
 chapter : false
 pre : " <b> 2.2. </b> "
 ---
-1. Open [Amazon SNS console](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/dashboard)
-    - Click **Topics** on the left menu.
-    - Click **Create topic** button.
+1. Mở [Amazon SNS console](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/dashboard)
+    - Nhấp vào **Topics** trên menu bên trái.
+    - Nhấp vào nút **Create topic**.
       ![CreateSNS](/images/temp/1/18.png?width=90pc)
 
-2. At **Create topic** page.
-    - Click **Standard** at **Type**.
-    - Enter ``order-notice`` at **Name**.
+2. Tại trang **Create topic**.
+    - Nhấp vào **Standard** tại **Type**.
+    - Nhập ``order-notice`` tại **Name**.
       ![CreateSNS](/images/temp/1/19.png?width=90pc)
-    - Leave as default, scroll down and click **Create topic** button.
+    - Để mặc định, cuộn xuống và nhấp vào nút **Create topic**.
       ![CreateSNS](/images/temp/1/20.png?width=90pc)
 
-3. At **order-notice** page.
-    - Click **Subscriptions** tab.
-    - Click **Create subscription** button.
+3. Tại trang **order-notice**.
+    - Nhấp vào tab **Subscriptions**.
+    - Nhấp vào nút **Create subscription**.
       ![CreateSNS](/images/temp/1/21.png?width=90pc)
 
-4. At **Create subscription** page.
-    - Choose **Email** at **Protocol**.
-    - Enter your email at **Endpoint**.
-    - Click **Create subscription**.
+4. Tại trang **Create subscription**.
+    - Chọn **Email** tại **Protocol**.
+    - Nhập email của bạn tại **Endpoint**.
+    - Nhấp vào **Create subscription**.
       ![CreateSNS](/images/temp/1/22.png?width=90pc)
 
-5. Back to **order-notice** page.
-    - Click **Subscriptions** tab.
-    - Check the subscription that is just created with **Pending confirmation** status.
+5. Quay lại trang **order-notice**.
+    - Nhấp vào tab **Subscriptions**.
+    - Kiểm tra đăng ký vừa được tạo với trạng thái **Pending confirmation**.
       ![CreateSNS](/images/temp/1/23.png?width=90pc)
 
-6. Open your email box, search mail sent from **<no-reply@sns.amazonaws.com>**.
-    - Click on **Confirm subscription** link.
+6. Mở hộp thư email của bạn, tìm email gửi từ **<no-reply@sns.amazonaws.com>**.
+    - Nhấp vào liên kết **Confirm subscription**.
       ![CreateSNS](/images/temp/1/24.png?width=90pc)
-    - It will direct you to a new tab.
+    - Nó sẽ chuyển hướng bạn đến một tab mới.
       ![CreateSNS](/images/temp/1/25.png?width=90pc)
 
-7. Back to **order-notice** page, check the status **Confirmed** of the subscription that you just created.
+7. Quay lại trang **order-notice**, kiểm tra trạng thái **Confirmed** của đăng ký bạn vừa tạo.
     ![CreateSNS](/images/temp/1/26.png?width=90pc)
