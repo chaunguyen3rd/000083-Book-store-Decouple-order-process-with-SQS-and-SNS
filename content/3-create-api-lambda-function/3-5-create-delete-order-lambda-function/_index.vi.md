@@ -1,16 +1,16 @@
 ---
-title : "Create delete_order Lambda function"
+title : "Tạo hàm delete_order Lambda"
 date :  "`r Sys.Date()`" 
 weight : 5
 chapter : false
 pre : " <b> 3.5 </b> "
 ---
-In this step, we will create a new delete_order Lambda function using a SAM template.
+Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới bằng cách sử dụng mẫu SAM.
 
-#### Preparation
+#### Chuẩn bị
 
-1. Open **template.yaml** in the source code you downloaded before.
-    - Comment this code block.
+1. Mở **template.yaml** trong mã nguồn bạn đã tải xuống trước đó.
+    - Bình luận khối mã này.
 
       ```yaml
       # BookApiDeployment:
@@ -38,7 +38,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
       ![CreateDeleteOrderFunction](/images/temp/1/33.png?width=90pc)
 
-2. Run the below commands.
+2. Chạy các lệnh dưới đây.
 
     ```bash
     sam build
@@ -48,10 +48,10 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
     ![CreateDeleteOrderFunction](/images/temp/1/35.png?width=90pc)
 
-#### Create FcjDeleteOrder function
+#### Tạo hàm FcjDeleteOrder
 
-1. Open **template.yaml** in the source code you downloaded before.
-    - Add the following scripts below to create **FcjDeleteOrder** function.
+1. Mở **template.yaml** trong mã nguồn bạn đã tải xuống trước đó.
+    - Thêm các đoạn mã sau để tạo hàm **FcjDeleteOrder**.
 
       ```yaml
       FcjDeleteOrderFunction:
@@ -105,7 +105,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
       ![CreateDeleteOrderFunction](/images/temp/1/57.png?width=90pc)
 
-2. The directory structure is as follows.
+2. Cấu trúc thư mục như sau.
 
     ```bash
     fcj-book-shop-sam-ws3
@@ -123,8 +123,8 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
     └── template.yaml
     ```
 
-    - Create **delete_order** folder in **fcj-book-shop-sam-ws6/fcj-book-shop/** folder.
-    - Create **delete_order.py** file and copy the following code to it.
+    - Tạo thư mục **delete_order** trong thư mục **fcj-book-shop-sam-ws6/fcj-book-shop/**.
+    - Tạo tệp **delete_order.py** và sao chép mã sau vào đó.
 
       ```py
       import json
@@ -170,7 +170,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
       ![CreateDeleteOrderFunction](/images/temp/1/58.png?width=90pc)
 
-3. Uncomment this code block.
+3. Bỏ bình luận khối mã này.
 
     ```yaml
     BookApiDeployment:
@@ -199,7 +199,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
     ![CreateDeleteOrderFunction](/images/temp/1/59.png?width=90pc)
 
-4. Run the below commands.
+4. Chạy các lệnh dưới đây.
 
     ```bash
     sam build
@@ -209,18 +209,18 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
 
     ![CreateDeleteOrderFunction](/images/temp/1/60.png?width=90pc)
 
-#### Check the creation
+#### Kiểm tra việc tạo
 
-1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
-    - Click **fcj-serverless-api**.
+1. Mở [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
+    - Nhấp vào **fcj-serverless-api**.
       ![CreateDeleteOrderFunction](/images/temp/1/38.png?width=90pc)
-    - Click **Resources** on the left menu.
-    - Check **/order** just created.
+    - Nhấp vào **Resources** trên menu bên trái.
+    - Kiểm tra **/order** vừa được tạo.
       ![CreateDeleteOrderFunction](/images/temp/1/61.png?width=90pc)
 
-2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
-    - Click **Functions** on the left menu.
-    - Choose **delete_order** function.
+2. Mở [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
+    - Nhấp vào **Functions** trên menu bên trái.
+    - Chọn hàm **delete_order**.
       ![CreateDeleteOrderFunction](/images/temp/1/62.png?width=90pc)
-    - At **delete_order** page, check the function that just created.
+    - Tại trang **delete_order**, kiểm tra hàm vừa được tạo.
       ![CreateDeleteOrderFunction](/images/temp/1/63.png?width=90pc)
