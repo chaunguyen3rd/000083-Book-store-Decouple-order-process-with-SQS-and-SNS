@@ -51,7 +51,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
     - Add the following scripts below to create **FcjOrderManagement** function.
 
       ```yaml
-      FcjOrderManagementFunction:
+      FcjOrderManagementFunctFcjOrderManagementFunction:
         Type: AWS::Serverless::Function
         Properties:
           CodeUri: fcj-book-shop/order_management
@@ -61,6 +61,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
           Environment:
             Variables:
               SQS_QUEUE_URL: !Ref checkoutQueueUrl
+              ORDER_TABLE_NAME: !Ref orderTable
           Architectures:
             - x86_64
           Policies:
@@ -68,9 +69,10 @@ In this step, we will create a new order_management Lambda function using a SAM 
                 - Sid: VisualEditor0
                   Effect: Allow
                   Action:
+                    - dynamodb:Scan
                     - dynamodb:Query
                   Resource:
-                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:${orderTable}"
+                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${orderTable}"
                 - Sid: VisualEditor1
                   Effect: Allow
                   Action:
@@ -106,7 +108,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      <!-- ADD IMAGE 42 HERE -->
+      ![CreateOrderManagementFunction](/images/temp/1/42.png?width=90pc)
 
 2. The directory structure is as follows.
 
@@ -130,9 +132,6 @@ In this step, we will create a new order_management Lambda function using a SAM 
       import json
       import boto3
 
-      # Initialize
-      sqs = boto3.client('sqs')
-      queue_url = os.getenv('SQS_QUEUE_URL')
       headers = {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -140,10 +139,15 @@ In this step, we will create a new order_management Lambda function using a SAM 
           "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
       }
 
+      dynamodb = boto3.resource('dynamodb')
+      sqs = boto3.client('sqs')
+
+      # Get value of the environment variables
+      table_name = os.getenv('ORDER_TABLE_NAME')
+      queue_url = os.getenv('SQS_QUEUE_URL')
+
 
       def get_messages_from_sqs(messages):
-          messages = []
-
           # Get the total number of messages in the queue
           response = sqs.get_queue_attributes(
               QueueUrl=queue_url,
@@ -165,14 +169,48 @@ In this step, we will create a new order_management Lambda function using a SAM 
                           "receiptHandle": message["ReceiptHandle"],
                           "books": json.loads(message["Body"])['books'],
                           "price": json.loads(message["Body"])['price'],
-                          "processed": False
+                          "status": "Unprocessed"
                       })
 
-      # Get Messages from DynamoDB
 
+      def get_messages_from_dynamodb(messages):
+          table = dynamodb.Table(table_name)
 
-      def get_messages_from_dynamodb():
-          pass
+          try:
+              res = table.scan()
+              orders = res.get('Items', [])
+              aggregated_orders = {}
+
+              for order in orders:
+                  order_id = order['id']
+
+                  book = {
+                      'id': order['book_id'],
+                      'name': order['name'],
+                      'qty': order['qty'],
+                  }
+
+                  if order_id not in aggregated_orders:
+                      aggregated_orders[order_id] = {
+                          'id': order_id,
+                          'books': [book],
+                          'price': order['price']
+                      }
+
+                  else:
+                      aggregated_orders[order_id]['books'].append(book)
+
+              for order in aggregated_orders.values():
+                  messages.append({
+                      "receiptHandle": "",
+                      "books": order['books'],
+                      "price": order['price'],
+                      "status": "Processed"
+                  })
+
+          except Exception as e:
+              print(f"Error reading from DynamoDB: {e}")
+              raise Exception(f"Error reading from DynamoDB: {e}")
 
 
       def lambda_handler(event, context):
@@ -181,9 +219,8 @@ In this step, we will create a new order_management Lambda function using a SAM 
           # Get messages from sqs
           get_messages_from_sqs(messages)
 
-          print(f"messages: {messages}")
-
           # Get Messages from DynamoDB
+          get_messages_from_dynamodb(messages)
 
           return {
               'statusCode': 200,
@@ -192,7 +229,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
           }
       ```
 
-      <!-- ADD IMAGE 43 HERE -->
+      ![CreateOrderManagementFunction](/images/temp/1/43.png?width=90pc)
 
 3. Uncomment this code block.
 
