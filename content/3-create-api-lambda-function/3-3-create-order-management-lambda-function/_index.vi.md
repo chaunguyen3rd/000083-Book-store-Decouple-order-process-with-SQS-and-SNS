@@ -33,7 +33,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateOrderManagementFunction](/images/temp/1/33.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -43,7 +43,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
     sam deploy --guided
     ```
 
-    ![CreateOrderManagementFunction](/images/temp/1/35.png?width=90pc)
+    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
 
 #### Tạo hàm FcjOrderManagement
 
@@ -108,7 +108,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateOrderManagementFunction](/images/temp/1/42.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/42.png?width=90pc)
 
 2. Cấu trúc thư mục như sau.
 
@@ -229,7 +229,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
           }
       ```
 
-      ![CreateOrderManagementFunction](/images/temp/1/43.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/43.png?width=90pc)
 
 3. Bỏ bình luận khối mã này.
 
@@ -256,7 +256,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateOrderManagementFunction](/images/temp/1/44.png?width=90pc)
+    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/44.png?width=90pc)
 
 4. Chạy các lệnh dưới đây.
 
@@ -266,20 +266,20 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
     sam deploy --guided
     ```
 
-    ![CreateOrderManagementFunction](/images/temp/1/45.png?width=90pc)
+    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/45.png?width=90pc)
 
 #### Kiểm tra việc tạo
 
 1. Mở [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Nhấp vào **fcj-serverless-api**.
-      ![CreateOrderManagementFunction](/images/temp/1/38.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
     - Nhấp vào **Resources** trên menu bên trái.
     - Kiểm tra **/order** vừa được tạo.
-      ![CreateOrderManagementFunction](/images/temp/1/46.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/46.png?width=90pc)
 
 2. Mở [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Nhấp vào **Functions** trên menu bên trái.
     - Chọn hàm **order_management**.
-      ![CreateOrderManagementFunction](/images/temp/1/47.png?width=90pc)
+      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/47.png?width=90pc)
     - Tại trang **order_management**, kiểm tra hàm vừa được tạo.
       <!-- ADD IMAGE 48 HERE -->

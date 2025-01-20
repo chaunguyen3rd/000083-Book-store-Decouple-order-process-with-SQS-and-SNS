@@ -33,7 +33,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
+      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -43,7 +43,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
     sam deploy --guided
     ```
 
-    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
+    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
 
 #### Tạo bảng FcjOrdersTable DynamoDB
 
@@ -56,7 +56,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
         Default: OrdersTable
       ```
 
-      ![CreateOrderTable](/images/temp/1/27.png?width=90pc)
+      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/27.png?width=90pc)
 
       ```yaml
       FcjOrdersTable:
@@ -76,7 +76,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
               KeyType: RANGE
       ```
 
-      ![CreateOrderTable](/images/temp/1/28.png?width=90pc)
+      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/28.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -86,7 +86,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
     sam deploy --guided
     ```
 
-    ![CreateOrderTable](/images/temp/1/29.png?width=90pc)
+    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/29.png?width=90pc)
 
 3. Mở [AWS DynamoDB](https://us-east-1.console.aws.amazon.com/dynamodbv2/home?region=us-east-1#tables) console để kiểm tra.
-    ![CreateOrderTable](/images/temp/1/30.png?width=90pc)
+    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/30.png?width=90pc)

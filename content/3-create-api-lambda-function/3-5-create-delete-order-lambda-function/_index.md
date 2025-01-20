@@ -36,7 +36,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/33.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -46,7 +46,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
     sam deploy --guided
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/35.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
 
 #### Create FcjDeleteOrder function
 
@@ -103,7 +103,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/57.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/57.png?width=90pc)
 
 2. The directory structure is as follows.
 
@@ -168,7 +168,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
           }
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/58.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/58.png?width=90pc)
 
 3. Uncomment this code block.
 
@@ -197,7 +197,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/59.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/59.png?width=90pc)
 
 4. Run the below commands.
 
@@ -207,20 +207,20 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
     sam deploy --guided
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/60.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/60.png?width=90pc)
 
 #### Check the creation
 
 1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Click **fcj-serverless-api**.
-      ![CreateDeleteOrderFunction](/images/temp/1/38.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
     - Click **Resources** on the left menu.
     - Check **/order** just created.
-      ![CreateDeleteOrderFunction](/images/temp/1/61.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/61.png?width=90pc)
 
 2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Click **Functions** on the left menu.
     - Choose **delete_order** function.
-      ![CreateDeleteOrderFunction](/images/temp/1/62.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/62.png?width=90pc)
     - At **delete_order** page, check the function that just created.
-      ![CreateDeleteOrderFunction](/images/temp/1/63.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/63.png?width=90pc)

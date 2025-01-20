@@ -20,7 +20,7 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
         Default: chaunguyen.site
       ```
 
-      ![Chuẩn bị](/images/temp/1/6.png?width=90pc)
+      ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/6.png?width=90pc)
 3. Chạy các lệnh dưới đây.
 {{% notice note %}}
 Đảm bảo bạn đã cài đặt AWS CLI và SAM CLI trên máy của bạn, cấu hình thông tin xác thực AWS trước khi chạy các lệnh.
@@ -39,16 +39,16 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
     - Allow SAM CLI IAM role creation [Y/n]: y
     - Disable rollback [y/N]: n
     - Save arguments to configuration file [Y/n]: y
-      ![Chuẩn bị](/images/temp/1/1.png?width=90pc)
+      ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/1.png?width=90pc)
 
 5. Thực hiện theo hướng dẫn này nếu nhà đăng ký tên miền của bạn không phải là AWS.
   {{% notice note %}}
   [Sử dụng Route 53 làm dịch vụ DNS cho một tên miền đang sử dụng](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html)
   {{% /notice %}}
       - Sao chép các bản ghi loại NS từ vùng lưu trữ Route53 của bạn.
-        ![Chuẩn bị](/images/temp/1/4.png?width=90pc)
+        ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/4.png?width=90pc)
       - Dán các bản ghi NS đó vào nhà đăng ký tên miền DNS của bạn.
-        ![Chuẩn bị](/images/temp/1/5.png?width=90pc)
+        ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/5.png?width=90pc)
 
 6. Mở **template.yaml** trong mã nguồn bạn đã tải xuống trước đó.
     - Bỏ chú thích khối mã này.
@@ -107,7 +107,7 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
       #       HostedZoneId: !Ref cloudFrontHostedZoneId
       ```
 
-    ![Chuẩn bị](/images/temp/1/6.png?width=90pc)
+    ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/6.png?width=90pc)
 
 7. Chạy các lệnh dưới đây.
 
@@ -117,7 +117,7 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
     sam deploy --guided
     ```
 
-    ![Chuẩn bị](/images/temp/1/7.png?width=90pc)
+    ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/7.png?width=90pc)
 
 8. Tải mã nguồn **FCJ-Serverless-Workshop** về thiết bị của bạn.
     - Mở terminal trên máy tính của bạn trong thư mục nơi bạn muốn lưu mã nguồn.
@@ -130,7 +130,7 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
 
     - Mở **FCJ-Serverless-Workshop** với VSCode và chỉnh sửa.
       - Mở **src/App.js** và chỉnh sửa ``isAdmin: true`` như dưới đây.
-        ![Chuẩn bị](/images/temp/1/64.png?width=90pc)
+        ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/64.png?width=90pc)
 
     - Quay lại thư mục gốc của **FCJ-Serverless-Workshop** và chạy các lệnh dưới đây.
 
@@ -146,6 +146,6 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
     ```
 
 10. Nhập các liên kết sau vào một tab mới trong trình duyệt web của bạn: ``http://www.DOMAIN``, thay thế tất cả DOMAIN bằng tên miền của bạn. Tất cả các liên kết đó sẽ chuyển hướng đến đường dẫn mới, thay thế http bằng https.
-    ![Chuẩn bị](/images/temp/1/8.png?width=90pc)
+    ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/8.png?width=90pc)
 
 Vậy là chúng ta đã xây dựng lại ứng dụng web.

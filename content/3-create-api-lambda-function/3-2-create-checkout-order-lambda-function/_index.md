@@ -33,7 +33,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateCheckoutOrderFunction](/images/temp/1/33.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -43,7 +43,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
     sam deploy --guided
     ```
 
-    ![CreateCheckoutOrderFunction](/images/temp/1/35.png?width=90pc)
+    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
 
 #### Create FcjCheckOutOrder function
 
@@ -73,7 +73,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
           Default: order
         ```
 
-        ![CreateCheckoutOrderFunction](/images/temp/1/31.png?width=90pc)
+        ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/31.png?width=90pc)
 
         ```yaml
         FcjCheckOutOrderFunction:
@@ -161,7 +161,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
             SourceAccount: !Ref "AWS::AccountId"
         ```
 
-        ![CreateCheckoutOrderFunction](/images/temp/1/32.png?width=90pc)
+        ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/32.png?width=90pc)
 
 2. The directory structure is as follows.
 
@@ -232,7 +232,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
               raise Exception(f"Error processing order: {e}")
       ```
 
-      ![CreateCheckoutOrderFunction](/images/temp/1/37.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/37.png?width=90pc)
 
 3. Uncomment this code block.
 
@@ -258,7 +258,7 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateCheckoutOrderFunction](/images/temp/1/36.png?width=90pc)
+    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/36.png?width=90pc)
 
 4. Run the below commands.
 
@@ -268,20 +268,20 @@ In this step, we will create a new checkout_order Lambda function using a SAM te
     sam deploy --guided
     ```
 
-    ![CreateCheckoutOrderFunction](/images/temp/1/34.png?width=90pc)
+    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/34.png?width=90pc)
 
 #### Check the creation
 
 1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Click **fcj-serverless-api**.
-      ![CreateCheckoutOrderFunction](/images/temp/1/38.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
     - Click **Resources** on the left menu.
     - Check **/order** just created.
-      ![CreateCheckoutOrderFunction](/images/temp/1/39.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/39.png?width=90pc)
 
 2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Click **Functions** on the left menu.
     - Choose **checkout_order** function.
-      ![CreateCheckoutOrderFunction](/images/temp/1/40.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/40.png?width=90pc)
     - At **checkout_order** page, check the function that just created.
-      ![CreateCheckoutOrderFunction](/images/temp/1/41.png?width=90pc)
+      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/41.png?width=90pc)

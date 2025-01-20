@@ -36,7 +36,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/33.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -46,7 +46,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
     sam deploy --guided
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/35.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
 
 #### Tạo hàm FcjDeleteOrder
 
@@ -103,7 +103,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/57.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/57.png?width=90pc)
 
 2. Cấu trúc thư mục như sau.
 
@@ -168,7 +168,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
           }
       ```
 
-      ![CreateDeleteOrderFunction](/images/temp/1/58.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/58.png?width=90pc)
 
 3. Bỏ bình luận khối mã này.
 
@@ -197,7 +197,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/59.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/59.png?width=90pc)
 
 4. Chạy các lệnh dưới đây.
 
@@ -207,20 +207,20 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
     sam deploy --guided
     ```
 
-    ![CreateDeleteOrderFunction](/images/temp/1/60.png?width=90pc)
+    ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/60.png?width=90pc)
 
 #### Kiểm tra việc tạo
 
 1. Mở [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Nhấp vào **fcj-serverless-api**.
-      ![CreateDeleteOrderFunction](/images/temp/1/38.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
     - Nhấp vào **Resources** trên menu bên trái.
     - Kiểm tra **/order** vừa được tạo.
-      ![CreateDeleteOrderFunction](/images/temp/1/61.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/61.png?width=90pc)
 
 2. Mở [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Nhấp vào **Functions** trên menu bên trái.
     - Chọn hàm **delete_order**.
-      ![CreateDeleteOrderFunction](/images/temp/1/62.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/62.png?width=90pc)
     - Tại trang **delete_order**, kiểm tra hàm vừa được tạo.
-      ![CreateDeleteOrderFunction](/images/temp/1/63.png?width=90pc)
+      ![CreateDeleteOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/63.png?width=90pc)
