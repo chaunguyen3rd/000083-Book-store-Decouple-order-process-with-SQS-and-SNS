@@ -107,7 +107,7 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
       #       HostedZoneId: !Ref cloudFrontHostedZoneId
       ```
 
-    ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/6.png?width=90pc)
+    ![Chuẩn bị](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/89.png?width=90pc)
 
 7. Chạy các lệnh dưới đây.
 

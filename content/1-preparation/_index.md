@@ -20,7 +20,7 @@ Before we get to the main content of this workshop, we need to reset the web app
         Default: chaunguyen.site
       ```
 
-      ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/6.png?width=90pc)
+      ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/89.png?width=90pc)
 3. Run the below commands.
 {{% notice note %}}
 Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS credentials before running the commands.
