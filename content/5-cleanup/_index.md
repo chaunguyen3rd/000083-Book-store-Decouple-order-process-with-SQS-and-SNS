@@ -16,7 +16,7 @@ It will take a bit time to finish the cleanup
     - Choose your **Hosted zones** and cleanup all the records if possible.
 
 2. Empty S3 bucket.
-    - Open [AWS S3 console](https://s3.console.aws.amazon.com/s3/buckets?region=ap-southeast-1).
+    - Open [AWS S3 console](https://s3.console.aws.amazon.com/s3/buckets?region=us-east-1).
     - Select **fcj-book-shop-by-myself**.
     - Click **Empty**.
     - Enter **permanently delete**.
