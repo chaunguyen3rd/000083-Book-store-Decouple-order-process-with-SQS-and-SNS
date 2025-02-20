@@ -1,6 +1,6 @@
 ---
 title : "Tạo hàm checkout_order Lambda"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 2
 chapter : false
 pre : " <b> 3.2 </b> "
@@ -33,7 +33,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/33.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -43,7 +43,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
     sam deploy --guided
     ```
 
-    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
+    ![CreateCheckoutOrderFunction](/images/temp/1/35.png?width=90pc)
 
 #### Tạo hàm FcjCheckOutOrder
 
@@ -73,7 +73,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
           Default: order
         ```
 
-        ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/31.png?width=90pc)
+        ![CreateCheckoutOrderFunction](/images/temp/1/31.png?width=90pc)
 
         ```yaml
         FcjCheckOutOrderFunction:
@@ -161,7 +161,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
             SourceAccount: !Ref "AWS::AccountId"
         ```
 
-        ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/32.png?width=90pc)
+        ![CreateCheckoutOrderFunction](/images/temp/1/32.png?width=90pc)
 
 2. Cấu trúc thư mục như sau.
 
@@ -232,7 +232,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
               raise Exception(f"Error processing order: {e}")
       ```
 
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/37.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/37.png?width=90pc)
 
 3. Bỏ bình luận khối mã này.
 
@@ -258,7 +258,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/36.png?width=90pc)
+    ![CreateCheckoutOrderFunction](/images/temp/1/36.png?width=90pc)
 
 4. Chạy các lệnh dưới đây.
 
@@ -268,20 +268,20 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
     sam deploy --guided
     ```
 
-    ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/34.png?width=90pc)
+    ![CreateCheckoutOrderFunction](/images/temp/1/34.png?width=90pc)
 
 #### Kiểm tra việc tạo
 
 1. Mở [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Nhấp vào **fcj-serverless-api**.
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/38.png?width=90pc)
     - Nhấp vào **Resources** trên menu bên trái.
     - Kiểm tra **/order** vừa được tạo.
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/39.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/39.png?width=90pc)
 
 2. Mở [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Nhấp vào **Functions** trên menu bên trái.
     - Chọn hàm **checkout_order**.
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/40.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/40.png?width=90pc)
     - Tại trang **checkout_order**, kiểm tra hàm vừa được tạo.
-      ![CreateCheckoutOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/41.png?width=90pc)
+      ![CreateCheckoutOrderFunction](/images/temp/1/41.png?width=90pc)

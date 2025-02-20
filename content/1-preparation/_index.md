@@ -1,6 +1,6 @@
 ---
 title : "Preparation"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 1 
 chapter : false
 pre : " <b> 1. </b> "
@@ -20,7 +20,7 @@ Before we get to the main content of this workshop, we need to reset the web app
         Default: chaunguyen.site
       ```
 
-      ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/89.png?width=90pc)
+      ![Preparation](/images/temp/1/89.png?width=90pc)
 3. Run the below commands.
 {{% notice note %}}
 Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS credentials before running the commands.
@@ -39,16 +39,16 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     - Allow SAM CLI IAM role creation [Y/n]: y
     - Disable rollback [y/N]: n
     - Save arguments to configuration file [Y/n]: y
-      ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/1.png?width=90pc)
+      ![Preparation](/images/temp/1/1.png?width=90pc)
 
 5. Follow this instruction if your domain registrar isn't AWS.
   {{% notice note %}}
   [Making Route 53 the DNS service for a domain that's in use](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html)
   {{% /notice %}}
       - Copy these NS type records from your Route53 hosted zone.
-        ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/4.png?width=90pc)
+        ![Preparation](/images/temp/1/4.png?width=90pc)
       - Paste those NS records to your DNS domain registrar.
-        ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/5.png?width=90pc)
+        ![Preparation](/images/temp/1/5.png?width=90pc)
 
 6. Open **template.yaml** in the source code you downloaded before.
     - Uncomment this code block.
@@ -107,7 +107,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
       #       HostedZoneId: !Ref cloudFrontHostedZoneId
       ```
 
-    ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/6.png?width=90pc)
+    ![Preparation](/images/temp/1/6.png?width=90pc)
 
 7. Run the below commands.
 
@@ -117,7 +117,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     sam deploy --guided
     ```
 
-    ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/7.png?width=90pc)
+    ![Preparation](/images/temp/1/7.png?width=90pc)
 
 8. Download the **FCJ-Serverless-Workshop** code to your device.
     - Open a terminal on your computer in the folder where you want to save the source code.
@@ -130,7 +130,7 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
 
     - Open **FCJ-Serverless-Workshop** with VSCode and edit.
       - Open **src/App.js** and edit ``isAdmin: true`` as below.
-        ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/64.png?width=90pc)
+        ![Preparation](/images/temp/1/64.png?width=90pc)
 
     - Back to **FCJ-Serverless-Workshop** root path and run the commands below.
 
@@ -146,6 +146,6 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     ```
 
 10. Enter the following links in a new tab in your web browser: ``http://www.DOMAIN``, replace all DOMAIN with your domain name. All those links redirect to the new path, replace http with https.
-    ![Preparation](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/8.png?width=90pc)
+    ![Preparation](/images/temp/1/8.png?width=90pc)
 
 So we have rebuilt the web application.

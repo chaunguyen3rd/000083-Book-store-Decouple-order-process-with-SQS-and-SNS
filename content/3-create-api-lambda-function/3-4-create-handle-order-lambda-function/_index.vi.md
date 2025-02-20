@@ -1,6 +1,6 @@
 ---
 title : "Tạo hàm handle_order Lambda"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 4
 chapter : false
 pre : " <b> 3.4 </b> "
@@ -35,7 +35,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/33.png?width=90pc)
 
 2. Chạy các lệnh dưới đây.
 
@@ -45,7 +45,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
     sam deploy --guided
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/35.png?width=90pc)
 
 #### Tạo hàm FcjHandleOrder
 
@@ -58,7 +58,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
         Default: handle
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/52.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/52.png?width=90pc)
 
       ```yaml
       FcjHandleOrderResource:
@@ -147,7 +147,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/49.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/49.png?width=90pc)
 
 2. Cấu trúc thư mục như sau.
 
@@ -228,7 +228,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
           }
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/50.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/50.png?width=90pc)
 
 3. Bỏ bình luận khối mã này.
 
@@ -256,7 +256,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/51.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/51.png?width=90pc)
 
 4. Chạy các lệnh dưới đây.
 
@@ -266,20 +266,20 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
     sam deploy --guided
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/53.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/53.png?width=90pc)
 
 #### Kiểm tra việc tạo
 
 1. Mở [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Nhấp vào **fcj-serverless-api**.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/38.png?width=90pc)
     - Nhấp vào **Resources** trên menu bên trái.
     - Kiểm tra **/handle** vừa được tạo.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/54.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/54.png?width=90pc)
 
 2. Mở [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Nhấp vào **Functions** trên menu bên trái.
     - Chọn hàm **handle_order**.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/55.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/55.png?width=90pc)
     - Tại trang **handle_order**, kiểm tra hàm vừa được tạo.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/56.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/56.png?width=90pc)

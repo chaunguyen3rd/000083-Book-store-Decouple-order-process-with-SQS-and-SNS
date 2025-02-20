@@ -1,6 +1,6 @@
 ---
 title : "Create handle_order Lambda function"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 4
 chapter : false
 pre : " <b> 3.4 </b> "
@@ -35,7 +35,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -45,7 +45,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
     sam deploy --guided
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/35.png?width=90pc)
 
 #### Create FcjHandleOrder function
 
@@ -58,7 +58,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
         Default: handle
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/52.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/52.png?width=90pc)
 
       ```yaml
       FcjHandleOrderResource:
@@ -147,7 +147,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/49.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/49.png?width=90pc)
 
 2. The directory structure is as follows.
 
@@ -228,7 +228,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
           }
       ```
 
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/50.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/50.png?width=90pc)
 
 3. Uncomment this code block.
 
@@ -256,7 +256,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/51.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/51.png?width=90pc)
 
 4. Run the below commands.
 
@@ -266,20 +266,20 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
     sam deploy --guided
     ```
 
-    ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/53.png?width=90pc)
+    ![CreateHandleOrderFunction](/images/temp/1/53.png?width=90pc)
 
 #### Check the creation
 
 1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Click **fcj-serverless-api**.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/38.png?width=90pc)
     - Click **Resources** on the left menu.
     - Check **/handle** just created.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/54.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/54.png?width=90pc)
 
 2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Click **Functions** on the left menu.
     - Choose **handle_order** function.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/55.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/55.png?width=90pc)
     - At **handle_order** page, check the function that just created.
-      ![CreateHandleOrderFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/56.png?width=90pc)
+      ![CreateHandleOrderFunction](/images/temp/1/56.png?width=90pc)

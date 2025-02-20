@@ -1,6 +1,6 @@
 ---
 title : "Create order_management Lambda function"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 3
 chapter : false
 pre : " <b> 3.3 </b> "
@@ -33,7 +33,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -43,7 +43,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
     sam deploy --guided
     ```
 
-    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
+    ![CreateOrderManagementFunction](/images/temp/1/35.png?width=90pc)
 
 #### Create FcjOrderManagement function
 
@@ -108,7 +108,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
           SourceAccount: !Ref "AWS::AccountId"
       ```
 
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/42.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/42.png?width=90pc)
 
 2. The directory structure is as follows.
 
@@ -229,7 +229,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
           }
       ```
 
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/43.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/43.png?width=90pc)
 
 3. Uncomment this code block.
 
@@ -256,7 +256,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
         DeploymentId: !Ref BookApiDeployment
     ```
 
-    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/44.png?width=90pc)
+    ![CreateOrderManagementFunction](/images/temp/1/44.png?width=90pc)
 
 4. Run the below commands.
 
@@ -266,20 +266,20 @@ In this step, we will create a new order_management Lambda function using a SAM 
     sam deploy --guided
     ```
 
-    ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/45.png?width=90pc)
+    ![CreateOrderManagementFunction](/images/temp/1/45.png?width=90pc)
 
 #### Check the creation
 
 1. Open [Amazon API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
     - Click **fcj-serverless-api**.
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/38.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/38.png?width=90pc)
     - Click **Resources** on the left menu.
     - Check **/order** just created.
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/46.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/46.png?width=90pc)
 
 2. Open [Amazon Lambda console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
     - Click **Functions** on the left menu.
     - Choose **order_management** function.
-      ![CreateOrderManagementFunction](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/47.png?width=90pc)
+      ![CreateOrderManagementFunction](/images/temp/1/47.png?width=90pc)
     - At **order_management** page, check the function that just created.
       <!-- ADD IMAGE 48 HERE -->

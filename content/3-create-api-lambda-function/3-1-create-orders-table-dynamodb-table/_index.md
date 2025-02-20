@@ -1,6 +1,6 @@
 ---
 title : "Create OrdersTable DynamoDB table"
-date :  "`r Sys.Date()`" 
+date :  2025-02-11
 weight : 1
 chapter : false
 pre : " <b> 3.1 </b> "
@@ -33,7 +33,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
-      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/33.png?width=90pc)
+      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
 
 2. Run the below commands.
 
@@ -43,7 +43,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
     sam deploy --guided
     ```
 
-    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/35.png?width=90pc)
+    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
 
 #### Create FcjOrdersTable DynamoDB table
 
@@ -56,7 +56,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
         Default: OrdersTable
       ```
 
-      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/27.png?width=90pc)
+      ![CreateOrderTable](/images/temp/1/27.png?width=90pc)
 
       ```yaml
       FcjOrdersTable:
@@ -76,7 +76,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
               KeyType: RANGE
       ```
 
-      ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/28.png?width=90pc)
+      ![CreateOrderTable](/images/temp/1/28.png?width=90pc)
 
 2. Run the below commands.
 
@@ -86,7 +86,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
     sam deploy --guided
     ```
 
-    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/29.png?width=90pc)
+    ![CreateOrderTable](/images/temp/1/29.png?width=90pc)
 
 3. Open [AWS DynamoDB](https://us-east-1.console.aws.amazon.com/dynamodbv2/home?region=us-east-1#tables) console to check.
-    ![CreateOrderTable](https://chaunguyen3rd.github.io/000083-Book-store-Decouple-order-process-with-SQS-and-SNS/images/temp/1/30.png?width=90pc)
+    ![CreateOrderTable](/images/temp/1/30.png?width=90pc)
