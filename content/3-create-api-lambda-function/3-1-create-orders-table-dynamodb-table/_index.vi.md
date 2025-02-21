@@ -7,44 +7,6 @@ pre : " <b> 3.1 </b> "
 ---
 Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng cách sử dụng mẫu SAM.
 
-#### Chuẩn bị
-
-1. Mở **template.yaml** trong mã nguồn bạn đã tải xuống trước đó.
-    - Bình luận khối mã này.
-
-      ```yaml
-      # BookApiDeployment:
-      #   Type: AWS::ApiGateway::Deployment
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #   DependsOn:
-      #     - BookApiGet
-      #     - BookApiCreate
-      #     - BookApiDelete
-      #     - LoginApi
-      #     - RegisterApi
-      #     - ConfirmApi
-
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
-      #     DeploymentId: !Ref BookApiDeployment
-      ```
-
-      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
-
-2. Chạy các lệnh dưới đây.
-
-    ```bash
-    sam build
-    sam validate
-    sam deploy --guided
-    ```
-
-    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
-
 #### Tạo bảng FcjOrdersTable DynamoDB
 
 1. Mở **template.yaml** trong mã nguồn bạn đã tải xuống trước đó.
@@ -83,7 +45,7 @@ Trong bước này, chúng ta sẽ tạo một bảng DynamoDB mới bằng các
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderTable](/images/temp/1/29.png?width=90pc)

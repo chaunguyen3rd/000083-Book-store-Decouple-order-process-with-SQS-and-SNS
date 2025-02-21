@@ -32,3 +32,17 @@ It will take a bit time to finish the cleanup
       ```
 
     - If you have issues when deleting with command. Open [AWS Cloudformation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/getting-started). Then, delete all stacks related to this workshop.
+
+4. Cleanup SQS.
+    - Open [Amazon SQS console](https://us-east-1.console.aws.amazon.com/sqs/v2/home?region=us-east-1#/homepage).
+    - Choose **checkout-queue**.
+    - Click **Delete**.
+    - Enter `confirm`.
+    - Click **Delete**.
+
+5. Cleanup SNS.
+    - Open [Amazon SNS console](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/dashboard).
+    - Choose **order-notice** at **Topics**.
+    - Click **Delete**.
+    - Enter `delete me`.
+    - Click **Delete**.

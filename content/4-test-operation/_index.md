@@ -8,6 +8,27 @@ pre : " <b> 4. </b> "
 
 In this step, we will test Web operation.
 
+1. Open [API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
+    - Click **APIs** on the left menu.
+    - Choose **fcj-serverless-api**.
+      ![TestFrontEnd](/images/temp/1/90.png?width=90pc)
+    - Click **Stages** on the left menu.
+    - Choose **Staging**.
+    - Record **Invoke URL**.
+      ![TestFrontEnd](/images/temp/1/91.png?width=90pc)
+
+2. Open **config.js** file in source code folder of application - **FCJ-Serverless-Workshop**.
+    - Replace **APP_API_URL** with **InvokeURL**.
+      ![TestFrontEnd](/images/temp/1/92.png?width=90pc)
+
+3. Open your terminal and run the below commands.
+
+    ```bash
+    yarn build
+    aws s3 rm s3://fcj-book-shop-by-myself --recursive
+    aws s3 cp build s3://fcj-book-shop-by-myself --recursive
+    ```
+
 You can download the image files here to add data to check the operation of the services.
     {{%attachments title="Images" pattern=".*\.(jpg|png)$"/%}}
 

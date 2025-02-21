@@ -110,11 +110,12 @@ Trước khi chúng ta đi vào nội dung chính của bài workshop này, chú
     ![Chuẩn bị](/images/temp/1/89.png?width=90pc)
 
 7. Chạy các lệnh dưới đây.
+    > Việc triển khai Cloudfront Distribution có thể mất một lúc để hoàn thành, vì vậy hãy kiên nhẫn chờ đợi.
 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![Chuẩn bị](/images/temp/1/7.png?width=90pc)

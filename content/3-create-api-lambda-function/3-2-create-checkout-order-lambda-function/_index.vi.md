@@ -25,11 +25,11 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
       #     - RegisterApi
       #     - ConfirmApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -40,7 +40,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateCheckoutOrderFunction](/images/temp/1/35.png?width=90pc)
@@ -96,13 +96,13 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
                     Action:
                       - sqs:*
                     Resource:
-                      - !Sub "arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:${checkoutQueue}"
+                      - !Sub "arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:${checkoutQueueName}"
                   - Sid: VisualEditor1
                     Effect: Allow
                     Action:
                       - sns:Publish
                     Resource:
-                      - !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${orderTopic}"
+                      - !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${orderTopicName}"
 
         FcjCheckoutOrderResource:
           Type: AWS::ApiGateway::Resource
@@ -120,6 +120,8 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
             AuthorizationType: NONE
             Integration:
               Type: MOCK
+              RequestTemplates:
+                application/json: '{"statusCode": 200}'
               IntegrationResponses:
                 - StatusCode: "200"
                   ResponseParameters:
@@ -265,7 +267,7 @@ Trong bước này, chúng ta sẽ tạo một hàm checkout_order Lambda mới 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateCheckoutOrderFunction](/images/temp/1/34.png?width=90pc)

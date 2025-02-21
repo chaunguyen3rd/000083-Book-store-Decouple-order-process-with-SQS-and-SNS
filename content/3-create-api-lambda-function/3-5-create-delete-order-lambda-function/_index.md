@@ -28,11 +28,11 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
       #     - FcjOrderManagementApi
       #     - FcjHandleOrderApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -43,7 +43,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateDeleteOrderFunction](/images/temp/1/35.png?width=90pc)
@@ -204,7 +204,7 @@ In this step, we will create a new delete_order Lambda function using a SAM temp
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateDeleteOrderFunction](/images/temp/1/60.png?width=90pc)

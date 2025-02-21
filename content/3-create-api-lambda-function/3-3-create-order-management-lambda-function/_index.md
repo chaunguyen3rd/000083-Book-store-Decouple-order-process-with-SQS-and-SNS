@@ -25,11 +25,11 @@ In this step, we will create a new order_management Lambda function using a SAM 
       #     - RegisterApi
       #     - ConfirmApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -40,7 +40,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderManagementFunction](/images/temp/1/35.png?width=90pc)
@@ -51,7 +51,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
     - Add the following scripts below to create **FcjOrderManagement** function.
 
       ```yaml
-      FcjOrderManagementFunctFcjOrderManagementFunction:
+      FcjOrderManagementFunction:
         Type: AWS::Serverless::Function
         Properties:
           CodeUri: fcj-book-shop/order_management
@@ -263,7 +263,7 @@ In this step, we will create a new order_management Lambda function using a SAM 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderManagementFunction](/images/temp/1/45.png?width=90pc)
@@ -282,4 +282,4 @@ In this step, we will create a new order_management Lambda function using a SAM 
     - Choose **order_management** function.
       ![CreateOrderManagementFunction](/images/temp/1/47.png?width=90pc)
     - At **order_management** page, check the function that just created.
-      <!-- ADD IMAGE 48 HERE -->
+      ![CreateOrderManagementFunction](/images/temp/1/48.png?width=90pc)

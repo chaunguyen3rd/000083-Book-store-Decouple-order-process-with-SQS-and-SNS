@@ -110,11 +110,12 @@ Ensure you have the AWS CLI and SAM CLI installed on your machine, configure AWS
     ![Preparation](/images/temp/1/6.png?width=90pc)
 
 7. Run the below commands.
+    > Cloudfront Distribution can take a while to complete, so please be patient.
 
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![Preparation](/images/temp/1/7.png?width=90pc)

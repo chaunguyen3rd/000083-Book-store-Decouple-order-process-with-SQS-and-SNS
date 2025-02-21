@@ -7,44 +7,6 @@ pre : " <b> 3.1 </b> "
 ---
 In this step, we will create a new DynamoDB table using a SAM template.
 
-#### Preparation
-
-1. Open **template.yaml** in the source code you downloaded before.
-    - Comment this code block.
-
-      ```yaml
-      # BookApiDeployment:
-      #   Type: AWS::ApiGateway::Deployment
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #   DependsOn:
-      #     - BookApiGet
-      #     - BookApiCreate
-      #     - BookApiDelete
-      #     - LoginApi
-      #     - RegisterApi
-      #     - ConfirmApi
-
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
-      #     DeploymentId: !Ref BookApiDeployment
-      ```
-
-      ![CreateOrderTable](/images/temp/1/33.png?width=90pc)
-
-2. Run the below commands.
-
-    ```bash
-    sam build
-    sam validate
-    sam deploy --guided
-    ```
-
-    ![CreateOrderTable](/images/temp/1/35.png?width=90pc)
-
 #### Create FcjOrdersTable DynamoDB table
 
 1. Open **template.yaml** in the source code you downloaded before.
@@ -83,7 +45,7 @@ In this step, we will create a new DynamoDB table using a SAM template.
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderTable](/images/temp/1/29.png?width=90pc)

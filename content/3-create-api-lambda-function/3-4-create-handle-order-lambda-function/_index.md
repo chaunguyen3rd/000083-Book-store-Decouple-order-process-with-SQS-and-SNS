@@ -27,11 +27,11 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
       #     - FcjCheckoutOrderApi
       #     - FcjOrderManagementApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -42,7 +42,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateHandleOrderFunction](/images/temp/1/35.png?width=90pc)
@@ -89,7 +89,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
                     - dynamodb:PutItem
                     - dynamodb:BatchWriteItem
                   Resource:
-                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:${orderTable}"
+                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${orderTable}"
                 - Sid: VisualEditor1
                   Effect: Allow
                   Action:
@@ -263,7 +263,7 @@ In this step, we will create a new handle_order Lambda function using a SAM temp
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateHandleOrderFunction](/images/temp/1/53.png?width=90pc)

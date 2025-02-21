@@ -28,11 +28,11 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
       #     - FcjOrderManagementApi
       #     - FcjHandleOrderApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -43,7 +43,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateDeleteOrderFunction](/images/temp/1/35.png?width=90pc)
@@ -204,7 +204,7 @@ Trong bước này, chúng ta sẽ tạo một hàm delete_order Lambda mới b�
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateDeleteOrderFunction](/images/temp/1/60.png?width=90pc)

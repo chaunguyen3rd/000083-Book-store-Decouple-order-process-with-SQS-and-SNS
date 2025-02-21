@@ -6,7 +6,28 @@ chapter : false
 pre : " <b> 4. </b> "
 ---
 
-Trong bước này, chúng ta sẽ kiểm tra hoạt động của Web.
+Trong bước này, chúng ta sẽ kiểm tra hoạt động web.
+
+1. Mở [API Gateway console](https://us-east-1.console.aws.amazon.com/apigateway/main/apis?region=us-east-1).
+    - Nhấp vào **APIs** trên menu bên trái.
+    - Chọn **fcj-serverless-api**.
+      ![TestFrontEnd](/images/temp/1/90.png?width=90pc)
+    - Nhấp vào **Stages** trên menu bên trái.
+    - Chọn **Staging**.
+    - Ghi lại **Invoke URL**.
+      ![TestFrontEnd](/images/temp/1/91.png?width=90pc)
+
+2. Mở tệp **config.js** trong thư mục mã nguồn của ứng dụng - **FCJ-Serverless-Workshop**.
+    - Thay thế **APP_API_URL** bằng **InvokeURL**.
+      ![TestFrontEnd](/images/temp/1/92.png?width=90pc)
+
+3. Mở terminal của bạn và chạy các lệnh dưới đây.
+
+    ```bash
+    yarn build
+    aws s3 rm s3://fcj-book-shop-by-myself --recursive
+    aws s3 cp build s3://fcj-book-shop-by-myself --recursive
+    ```
 
 Bạn có thể tải xuống các tệp hình ảnh tại đây để thêm dữ liệu kiểm tra hoạt động của các dịch vụ.
     {{%attachments title="Images" pattern=".*\.(jpg|png)$"/%}}
@@ -20,11 +41,11 @@ Bạn có thể tải xuống các tệp hình ảnh tại đây để thêm d�
     - Nhập tác giả: ``Jame Patterson``.
     - Nhập thể loại: ``IT``.
     - Nhập giá: ``10.98``.
-    - Nhập mô tả: ``Hướng dẫn cho người mới bắt đầu học các kiến thức cơ bản về Java``.
+    - Nhập mô tả: ``Hướng dẫn cơ bản để học Java``.
     - Nhấp vào nút **Choose File** và chọn hình ảnh **LetGoBook.png** mà bạn vừa tải xuống.
     - Nhấp vào nút **Create**.
       ![TestOperation](/images/temp/1/69.png?width=90pc)
-    - Nhấp vào nút **OK** khi cửa sổ bật lên xuất hiện.
+    - Nhấp vào nút **OK** khi popup mở ra.
       ![TestOperation](/images/temp/1/70.png?width=90pc)
 
 3. Tạo sách mới như bước trước.
@@ -38,12 +59,12 @@ Bạn có thể tải xuống các tệp hình ảnh tại đây để thêm d�
     - Nhấp vào nút **Choose File** và chọn hình ảnh **LetGoBook.png** mà bạn vừa tải xuống.
     - Nhấp vào nút **Create**.
       ![TestOperation](/images/temp/1/71.png?width=90pc)
-    - Nhấp vào nút **OK** khi cửa sổ bật lên xuất hiện.
+    - Nhấp vào nút **OK** khi popup mở ra.
       ![TestOperation](/images/temp/1/70.png?width=90pc)
 
 4. Quay lại trang chủ.
     - Nhấp vào **Home**.
-    - Nhấp vào nút **Add to cart** để thêm cả 2 cuốn sách vào giỏ hàng.
+    - Nhấp vào nút **Add to cart** để thêm cả 2 sách vào giỏ hàng.
     - Sau đó, nhấp vào biểu tượng **Cart** ở góc trên bên phải.
       ![TestOperation](/images/temp/1/72.png?width=90pc)
 
@@ -63,22 +84,22 @@ Bạn có thể tải xuống các tệp hình ảnh tại đây để thêm d�
       ![TestOperation](/images/temp/1/77.png?width=90pc)
     - Sau đó, nhấp vào tin nhắn hiển thị.
       ![TestOperation](/images/temp/1/78.png?width=90pc)
-    - Kiểm tra cửa sổ bật lên **Message: ...** và nhấp vào nút **Done**.
+    - Kiểm tra popup **Message: ...** và nhấp vào nút **Done**.
       ![TestOperation](/images/temp/1/79.png?width=90pc)
 
 7. Mở email mà bạn đã đăng ký để nhận thông báo.
     ![TestOperation](/images/temp/1/80.png?width=90pc)
 
 8. Quay lại tab ứng dụng.
-    - Nhấp vào **Orders** và kiểm tra các cuốn sách bạn đã thêm vào giỏ hàng.
+    - Nhấp vào **Orders** và kiểm tra các sách bạn đã thêm vào giỏ hàng.
       ![TestOperation](/images/temp/1/81.png?width=90pc)
 
-9. Tiếp theo, lặp lại bước **5** để thêm một số đơn hàng khác theo ý muốn.
+9. Tiếp theo, lặp lại bước **5** để thêm một số đơn hàng khác theo ý bạn.
 
 10. Mở tab ứng dụng.
-    - Nhấp vào **Orders** và kiểm tra các cuốn sách bạn đã thêm vào giỏ hàng.
+    - Nhấp vào **Orders** và kiểm tra các sách bạn đã thêm vào giỏ hàng.
       ![TestOperation](/images/temp/1/82.png?width=90pc)
-    - Nhấp vào nút **Handle** và sau đó nhấp vào nút **OK** trên cửa sổ bật lên.
+    - Nhấp vào nút **Handle** và sau đó nhấp vào nút **OK** trên popup.
       ![TestOperation](/images/temp/1/83.png?width=90pc)
 
 11. Mở [AWS DynamoDB](https://us-east-1.console.aws.amazon.com/dynamodbv2/home?region=us-east-1#tables).
@@ -91,8 +112,8 @@ Bạn có thể tải xuống các tệp hình ảnh tại đây để thêm d�
       ![TestOperation](/images/temp/1/88.png?width=90pc)
 
 12. Quay lại tab ứng dụng.
-    - Nhấp vào **Orders** và kiểm tra các cuốn sách bạn đã thêm vào giỏ hàng.
-    - Tiếp theo, nhấp vào nút **Delete** và sau đó nhấp vào nút **OK** trên cửa sổ bật lên.
+    - Nhấp vào **Orders** và kiểm tra các sách bạn đã thêm vào giỏ hàng.
+    - Tiếp theo, nhấp vào nút **Delete** và sau đó nhấp vào nút **OK** trên popup.
       ![TestOperation](/images/temp/1/84.png?width=90pc)
-    - Các mục đã xóa không còn hiển thị nữa.
+    - Các mục đã xóa sẽ không còn hiển thị nữa.
       ![TestOperation](/images/temp/1/85.png?width=90pc)

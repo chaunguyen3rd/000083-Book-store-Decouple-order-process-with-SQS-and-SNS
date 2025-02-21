@@ -25,11 +25,11 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
       #     - RegisterApi
       #     - ConfirmApi
 
-      # BookApiStage:
-      #   Type: AWS::ApiGateway::Stage
-      #   Properties:
-      #     RestApiId: !Ref BookApi
-      #     StageName: !Ref stage
+      BookApiStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+          RestApiId: !Ref BookApi
+          StageName: !Ref stage
       #     DeploymentId: !Ref BookApiDeployment
       ```
 
@@ -40,7 +40,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderManagementFunction](/images/temp/1/35.png?width=90pc)
@@ -263,7 +263,7 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateOrderManagementFunction](/images/temp/1/45.png?width=90pc)
@@ -282,4 +282,4 @@ Trong bước này, chúng ta sẽ tạo một hàm order_management Lambda mớ
     - Chọn hàm **order_management**.
       ![CreateOrderManagementFunction](/images/temp/1/47.png?width=90pc)
     - Tại trang **order_management**, kiểm tra hàm vừa được tạo.
-      <!-- ADD IMAGE 48 HERE -->
+      ![CreateOrderManagementFunction](/images/temp/1/48.png?width=90pc)

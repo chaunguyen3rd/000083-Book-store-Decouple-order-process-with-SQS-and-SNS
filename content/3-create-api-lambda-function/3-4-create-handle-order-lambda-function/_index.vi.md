@@ -42,7 +42,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateHandleOrderFunction](/images/temp/1/35.png?width=90pc)
@@ -89,7 +89,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
                     - dynamodb:PutItem
                     - dynamodb:BatchWriteItem
                   Resource:
-                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:${orderTable}"
+                    - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${orderTable}"
                 - Sid: VisualEditor1
                   Effect: Allow
                   Action:
@@ -263,7 +263,7 @@ Trong bước này, chúng ta sẽ tạo một hàm handle_order Lambda mới b�
     ```bash
     sam build
     sam validate
-    sam deploy --guided
+    sam deploy
     ```
 
     ![CreateHandleOrderFunction](/images/temp/1/53.png?width=90pc)
